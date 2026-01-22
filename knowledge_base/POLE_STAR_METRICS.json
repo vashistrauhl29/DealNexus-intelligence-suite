@@ -1,0 +1,195 @@
+{
+  "metadata": {
+    "document_name": "Pole Star Metrics",
+    "version": "1.0",
+    "description": "Key performance indicators for Document Architect ROI synthesis and client value quantification",
+    "owner": "document_architect",
+    "last_updated": "2024-01-15"
+  },
+
+  "metrics": {
+    "productivity_gain": {
+      "display_name": "Productivity Gain",
+      "description": "Estimated minutes saved per employee per day through unified search and AI-assisted knowledge retrieval",
+      "unit": "minutes/employee/day",
+      "benchmarks": {
+        "conservative": 15,
+        "moderate": 30,
+        "aggressive": 45
+      },
+      "calculation_method": "time_motion_study",
+      "data_sources": [
+        "search_query_logs",
+        "session_duration",
+        "context_switching_events"
+      ],
+      "industry_averages": {
+        "technology": 35,
+        "financial_services": 28,
+        "healthcare": 25,
+        "retail": 22,
+        "manufacturing": 20
+      },
+      "annual_value_formula": "((minutes_saved * working_days_per_year) / 60) * hourly_rate * employee_count",
+      "presentation_format": {
+        "headline": "{{value}} minutes saved per employee daily",
+        "subtext": "Equivalent to {{annual_hours}} hours annually per employee"
+      }
+    },
+
+    "knowledge_retrieval_latency": {
+      "display_name": "Knowledge Retrieval Latency",
+      "description": "Time reduction in finding internal documentation, policies, and institutional knowledge",
+      "unit": "percentage_reduction",
+      "benchmarks": {
+        "conservative": 40,
+        "moderate": 60,
+        "aggressive": 75
+      },
+      "baseline_measurement": {
+        "description": "Average time to find specific information before Glean",
+        "typical_baseline_minutes": 8,
+        "typical_post_glean_minutes": 2
+      },
+      "calculation_method": "before_after_comparison",
+      "data_sources": [
+        "search_latency_logs",
+        "user_surveys",
+        "support_ticket_analysis"
+      ],
+      "presentation_format": {
+        "headline": "{{value}}% faster information discovery",
+        "subtext": "From {{baseline}} minutes to {{post_glean}} minutes average"
+      }
+    },
+
+    "onboarding_velocity": {
+      "display_name": "Onboarding Velocity",
+      "description": "Percentage decrease in time-to-competency for new hires through improved knowledge access",
+      "unit": "percentage_reduction",
+      "benchmarks": {
+        "conservative": 20,
+        "moderate": 35,
+        "aggressive": 50
+      },
+      "baseline_measurement": {
+        "description": "Average time to full productivity for new hires",
+        "typical_baseline_weeks": 12,
+        "typical_post_glean_weeks": 8
+      },
+      "calculation_method": "cohort_analysis",
+      "data_sources": [
+        "hr_onboarding_metrics",
+        "manager_assessments",
+        "first_contribution_timestamp"
+      ],
+      "cost_impact": {
+        "description": "Reduced ramp time directly impacts productivity cost",
+        "formula": "weeks_saved * weekly_salary * new_hire_count"
+      },
+      "presentation_format": {
+        "headline": "{{value}}% faster new hire ramp-up",
+        "subtext": "New employees reach full productivity {{weeks_saved}} weeks sooner"
+      }
+    },
+
+    "support_deflection": {
+      "display_name": "Support Deflection Rate",
+      "description": "Percentage of internal support tickets resolved by Glean Chat without human intervention",
+      "unit": "percentage",
+      "benchmarks": {
+        "conservative": 15,
+        "moderate": 30,
+        "aggressive": 45
+      },
+      "calculation_method": "ticket_analysis",
+      "data_sources": [
+        "glean_chat_sessions",
+        "support_ticket_volume",
+        "resolution_source_tagging"
+      ],
+      "ticket_categories_impacted": [
+        "IT_how_to",
+        "HR_policy_questions",
+        "process_documentation",
+        "tool_usage",
+        "benefits_inquiries"
+      ],
+      "cost_impact": {
+        "description": "Each deflected ticket saves support team time",
+        "average_ticket_cost_usd": 25,
+        "formula": "deflected_tickets * average_ticket_cost"
+      },
+      "presentation_format": {
+        "headline": "{{value}}% of questions answered instantly",
+        "subtext": "{{deflected_count}} tickets deflected monthly, saving ${{monthly_savings}}"
+      }
+    }
+  },
+
+  "composite_scores": {
+    "overall_roi": {
+      "display_name": "Total Annual ROI",
+      "components": [
+        "productivity_gain",
+        "knowledge_retrieval_latency",
+        "onboarding_velocity",
+        "support_deflection"
+      ],
+      "calculation": {
+        "productivity_value": "productivity_gain.annual_value_formula",
+        "onboarding_value": "onboarding_velocity.cost_impact.formula",
+        "support_value": "support_deflection.cost_impact.formula",
+        "total": "productivity_value + onboarding_value + support_value"
+      }
+    },
+    "time_to_value": {
+      "display_name": "Time to Value",
+      "description": "Expected weeks until measurable ROI is achieved",
+      "typical_range_weeks": {
+        "min": 4,
+        "max": 12
+      }
+    }
+  },
+
+  "presentation_templates": {
+    "executive_summary": {
+      "format": "markdown_table",
+      "columns": ["Metric", "Current State", "With Glean", "Impact"]
+    },
+    "roi_calculator": {
+      "format": "interactive_table",
+      "inputs": ["employee_count", "average_salary", "current_search_time", "monthly_ticket_volume"],
+      "outputs": ["annual_savings", "payback_period", "roi_percentage"]
+    },
+    "benchmark_comparison": {
+      "format": "bar_chart",
+      "compare_to": ["industry_average", "top_quartile", "glean_customer_median"]
+    }
+  },
+
+  "data_collection_requirements": {
+    "pre_implementation": [
+      "Current average search time (survey or observation)",
+      "Monthly internal support ticket volume",
+      "Average new hire time-to-productivity",
+      "Employee count by department"
+    ],
+    "post_implementation": [
+      "Glean search analytics",
+      "Chat deflection logs",
+      "User satisfaction surveys",
+      "Support ticket trend analysis"
+    ]
+  },
+
+  "validation_notes": {
+    "confidence_levels": {
+      "high": "Based on direct measurement and Glean analytics",
+      "medium": "Based on customer surveys and estimates",
+      "low": "Based on industry benchmarks and projections"
+    },
+    "disclaimer": "Actual results may vary based on implementation scope, user adoption, and organizational factors."
+  }
+}

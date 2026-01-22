@@ -1,0 +1,53 @@
+Participants:
+
+Alex (Glean Account Executive)
+
+Maya (VP of People at Jobright - The Champion)
+
+Leo (CTO at Jobright - The Technical Buyer)
+
+Sam (CISO at Jobright - The Blocker)
+
+Transcript:
+
+Alex: Thanks for pulling this group together. I’ve reviewed the growth numbers—300% year-over-year is incredible. The goal today is to see how Glean can support that scaling without breaking your culture. Maya, let's start with you.
+
+Maya (VP People): Honest answer? We are drowning. We hired 40 engineers last month alone. My onboarding team is burnt out. New hires are taking 6 to 8 weeks to become fully productive because they can't find anything. They rely entirely on "tribal knowledge"—tapping someone on the shoulder on Slack to ask how to deploy code. But with the team tripling in size, the "old guard" who knows everything is too busy to answer questions.
+
+Alex: That "shoulder tapping" is exactly what kills momentum. Where is the documentation supposed to live?
+
+Leo (CTO): That’s the second problem. We have a "tool sprawl" issue. The legacy engineering team lives in Confluence. The new product teams we acquired in London live in Notion. And the data science team in Bangalore keeps their model specs in Google Drive.
+
+Alex: So you have three sources of truth, which means you have none.
+
+Leo (CTO): Exactly. And because we are a global team—SF, London, Bangalore—the time zones kill us. If a London engineer needs a spec from an SF product manager, they post on Slack and wait 12 hours for a reply. We calculated we're losing about 3 days of productivity per sprint just waiting for answers.
+
+Alex: Glean solves this by indexing Confluence, Notion, Google Drive, and Slack into one unified search bar. Your London engineer searches "Model X Deployment," and Glean pulls the answer instantly, even if the SF team is asleep.
+
+Sam (CISO): Pause for a second. You mentioned indexing our "Model Specs."
+
+Alex: Correct. We index the text to make it searchable.
+
+Sam (CISO): That is a major red flag for me. We are building proprietary Large Language Models (LLMs) for HR decision-making. Our model weights and architecture documents are our "Crown Jewels." I cannot have that IP sitting in a multi-tenant search index where it might leak or be used to train your AI.
+
+Leo (CTO): Sam, we need those docs searchable. The devs are wasting hours looking for them.
+
+Sam (CISO): I understand the efficiency argument, Leo, but I cannot approve a tool that ingests our proprietary AI research. Unless Glean offers a "Bring Your Own Key" (BYOK) encryption setup or a guarantee that our data is logically isolated and never used for model training, this is a no-go. We have strict IP protection clauses with our investors.
+
+Alex: We take IP very seriously. We do offer BYOK and we have a zero-retention policy for our AI features—we don't train on your data.
+
+Sam (CISO): I need to see the SOC2 Type 2 report and the architecture diagram for the BYOK setup before we proceed. Until then, I’m marking the "Research Drive" as restricted.
+
+Maya (VP People): If we restrict the Research Drive, we solve the security issue, but we lose 50% of the value for the engineering team.
+
+Alex: We can set up permissions so that only authorized engineers can see those search results. Glean respects the permissions you already have in Google Drive.
+
+Sam (CISO): Permissions are fine, but it’s the storage of the index I’m worried about. I need to know where that index lives. If it's shared infrastructure, I’m blocking it.
+
+Alex: We can discuss a dedicated tenant option, though that typically moves us into the Enterprise pricing tier.
+
+Maya (VP People): What does that look like budget-wise? We have a strict headcount budget, but our software budget is tight.
+
+Alex: Enterprise starts at roughly a 30% premium over the standard seat price, plus a fixed implementation fee for the dedicated instance.
+
+Maya (VP People): I’ll need to check with Finance. If it pushes us over $100k ARR, I need CFO approval.

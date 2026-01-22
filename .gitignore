@@ -1,0 +1,8 @@
+# Inside /Volumes/Rahul's T7/ClaudeCode/Customer Discovery/.gitignore
+.env
+__pycache__/
+logs/
+workspace/
+outputs/
+*.zip
+.DS_Store

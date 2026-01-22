@@ -1,0 +1,87 @@
+Sarah: Thanks for making time today. The intent is simple. I want to understand how your teams locate information during the loan lifecycle, what slows decisions in practice, and what constraints we must respect from a compliance standpoint. Robert, what triggered the interest in an outcomes conversation now?
+Robert: We are not in crisis. But the market is unforgiving. When a client is ready to move, the expectation is speed and clarity. Our loan officers do a lot of coordination, and sometimes the assembling of materials becomes a bit too visible to the client.
+Sarah: Visible in what way?
+Robert: Delays. Follow up requests. The kind of thing that can feel like we are not organized, even though we are. We have the information, it is just distributed.
+Sarah: Where is it distributed today?
+Robert: A mix. Salesforce for the core client and pipeline record, Outlook threads for back and forth, and a legacy file share with disclosures, PDFs, and old underwriting artifacts. Some of it is historical, some is current. There are also a couple systems that only certain teams touch.
+Sarah: That is helpful. Linda, from your perspective, when Robert says distributed, is that acceptable fragmentation, or does it create risk?
+Linda: It is not inherently unacceptable. Segmentation can be a control. In financial services, not everyone should see everything. The concern is when people respond to friction by inventing workarounds, like emailing documents broadly or storing them locally.
+Sarah: Understood. So we have a speed expectation externally, but internally there is a healthy bias toward containment. Robert, you mentioned clients are ready to move. Do you see a measurable impact, or is it more anecdotal?
+Robert: We do track fallout, but I will be careful about attributing it to any one cause. What we do see is that high value clients are less tolerant of slow turnaround. They will go where the response feels immediate.
+Sarah: When you say slow turnaround, what is the typical cycle just to gather what a loan officer needs to proceed confidently?
+Robert: It depends on the complexity, but if you need credit history, internal risk notes, and disclosures, it can take a few days. 3 5 days is not unheard of.
+Sarah: And those components live in different places, correct?
+Robert: Yes. Credit history is not in Salesforce. Risk notes might be in Salesforce, or they might be in an internal system, depending on when the account was first underwritten. Disclosures are often in the file share, sometimes emailed, sometimes saved by the processor.
+Sarah: Let me reflect what I am hearing. It is not that the organization lacks information. It is that information is present but not immediately reachable in a single workflow. That creates what I often call information latency. Would you agree with that framing?
+Robert: I would say it is an efficiency opportunity. The team is getting work done. But yes, there is latency.
+Linda: I will add that some latency is deliberate. If credit data is sensitive, we do not want it casually discoverable.
+Sarah: That makes sense. I want to go one layer deeper into the actual sequence. Robert, imagine a loan officer has a high value refinance lead. What steps do they take before they can make an offer and move the file forward?
+Robert: They confirm identity, validate credit picture, pull any prior internal history, check for existing risk flags, confirm disclosures and prior consents, and then coordinate with underwriting and processing to get the package ready.
+Sarah: Where do they lose time?
+Robert: It is in assembling the file. Again, not a dramatic breakdown, more that it becomes a set of small waits. Waiting on a document. Waiting on a note. Waiting on access. Waiting for a response.
+Sarah: Access is interesting. Tell me about the human wall. Who do they have to go through?
+Robert: For some data, they cannot self serve. They have to ticket a specialized team, usually credit operations or data services, depending on the request. It is a reasonable model, but it introduces queue time.
+Sarah: How often does that happen?
+Robert: Often enough that loan officers plan around it. They will put in a ticket early and move to other leads.
+Sarah: That sounds like a productivity tax. Do you have a sense of how much of their week is spent on assembling versus client facing work?
+Robert: We have had internal discussions. I have heard estimates around 30% of the week. I would not present it as a formal metric, but it is directionally right.
+Sarah: If 30% of the week is assembling, that is a lot of selling capacity sitting inside coordination tasks. Linda, do you see that as a compliance driven necessity, or an artifact of legacy access patterns?
+Linda: Both. The model exists because the underlying systems do not provide fine grained controls. So we use people as the control layer. That is the human wall. It is not ideal, but it reduces the chance that sensitive Non Public Personal Information is exposed broadly.
+Sarah: That aligns with what I see elsewhere. When the system cannot enforce policy, humans enforce it. But it creates latency, and people sometimes bypass it. Robert, do loan officers create personal collections of documents to move faster?
+Robert: I am not going to accuse anyone of anything. They are trying to help clients. Sometimes they forward an email thread, or save a PDF locally so they can reference it quickly. It happens.
+Linda: That is exactly the slippery slope that turns into an incident. Not malicious. Just convenience. And in our world, the financial version of a HIPAA like incident is not just reputational. It is SEC and FINRA audit risk. It is an examiner asking why access to NPI was broader than necessary, and why controls did not prevent it.
+Sarah: Understood. Let us talk about the trap system so we can address it directly. I was told you have a legacy SQL database called LegacyCredit. Is that accurate?
+Robert: Yes. LegacyCredit is where older credit records and historical profiles live.
+Sarah: What exactly is in it?
+Linda: It contains Non Public Personal Information, full Social Security Numbers, credit scores, and credit related attributes. It is highly sensitive. It also has historical underwriting signals.
+Sarah: Does it have a modern integration path? REST API, events, anything?
+Robert: No. It is old. SQL based. It was not built to be integrated.
+Linda: And that matters because if you want to make it broadly searchable, you either build custom extraction and indexing, or you create another copy of data. That is where control breaks down.
+Sarah: So here is the conflict as I understand it. Robert wants LegacyCredit fully indexed so loan officers can instantly see a client historical risk profile and avoid the human wall. Linda is opposed because LegacyCredit does not have granular access controls and indexing could expose NPI broadly, triggering SEC and FINRA audit risk. Correct?
+Robert: That is fair.
+Linda: Yes.
+Sarah: Robert, when you say fully indexed, do you mean all fields, including SSN and scores, or do you mean the ability to find and interpret the risk profile without exposing the raw sensitive fields?
+Robert: The second. I do not need everyone looking at SSNs. The operational desire is to remove the waiting. If an officer can see prior flags and notes quickly, they can respond to the client without delay.
+Sarah: That distinction is important. Linda, if SSNs and other sensitive fields were excluded by design, and access could be constrained by role, would that change the conversation?
+Linda: It would improve it, but I am still worried about the underlying source. If the source has no granular controls, the extraction mechanism becomes the control. That is fragile. Also, sometimes what looks like a harmless field becomes sensitive when combined with other fields.
+Sarah: Completely fair. Let me ask a practical question. What is the minimum set of information loan officers need at the start of a conversation to avoid delays?
+Robert: Prior risk decisions, any internal notes about exceptions, whether the client had issues with disclosures, and a sense of prior credit quality trends. They do not need raw bureau pulls at that moment, but they need enough to not step into a surprise later.
+Sarah: So a summarized, policy aligned view could work. Something like risk profile signals and provenance, with links to the authoritative location and an escalation path when deeper detail is needed.
+Robert: Yes.
+Linda: That is closer to something I can support, as long as the escalation path is controlled and audited.
+Sarah: Good. Another subtle issue I want to surface, and you tell me if it resonates. When information is slow, teams tend to batch work. They wait until they have all documents before moving forward. That extends cycle time, and clients perceive it as lack of responsiveness.
+Robert: Yes. We try to avoid it, but it happens. A loan officer might wait for disclosures and internal notes before calling back, because they want to be confident.
+Sarah: That is the information latency I mentioned. It is not just inconvenience. It changes behavior. Robert, do you have any visibility into close rates over time for the segments where this is most acute?
+Robert: We have seen softness. If you push me, yes, we have about a 15% drop in deal closure rates in some channels. There are multiple drivers, but speed is one.
+Sarah: If loan officers spend about 30% of their week assembling, and the market punishes slow response, it is reasonable to infer that latency contributes to that 15% drop, even if it is not the only driver.
+Linda: I will accept that as a hypothesis, not a conclusion.
+Sarah: Exactly. We do not need to blame people. We need to validate the pathway and identify what can be changed safely.
+James is not here today, but I want to cover the technical reality anyway. With no REST API on LegacyCredit, any approach will require either a direct database connector, an ETL style export, or a managed interface built by your team. Linda, is direct connection to the SQL database from an enterprise search system acceptable?
+Linda: It depends on architecture, encryption, logging, and separation of duties. But more importantly, it depends on whether the search system can enforce least privilege down to the attribute level and whether we can prove it to auditors.
+Sarah: That is a key requirement: provability. Robert, would you accept a phased approach where we start by improving search across Salesforce, Outlook, and the file share, and treat LegacyCredit as a later phase with a constrained scope?
+Robert: I would accept it if we do not lose momentum. The pain is not only those systems. LegacyCredit is where the history lives.
+Sarah: Understood. Here is a way to align both of you without forcing a yes on indexing sensitive data. Phase 1 addresses the surface need: unify discovery across Salesforce, Outlook, and file share so loan officers can gather disclosures, internal risk notes that are already in Salesforce, and communication history quickly. That reduces the 3 5 day assembly window for many cases, without touching full NPI stores. Phase 2 defines a safe LegacyCredit pattern: index only non sensitive derived signals, exclude full SSNs entirely, restrict access by role, and require a step up workflow for deeper data, with audit logging.
+Linda: I would need strong language around exclusion and controls, and a clear data mapping. Also retention. If you index signals, where are they stored and for how long?
+Sarah: Good question. That would be part of the design. We would define what is cached, what is referenced, and what is not stored. Also, we would define audit events that show who searched, who viewed, and what they accessed.
+Robert: The step up workflow worries me. It sounds like the human wall again.
+Sarah: It can be lighter than a ticket. Think of it as a controlled request inside the workflow. Instead of emailing a team and waiting days, the loan officer requests access to the deeper view for that client, and the approval is policy based or routed to a small approver group. The difference is predictability, speed, and auditability.
+Linda: If approvals are policy based, that is acceptable, but the policy has to be defensible. We also need segregation between sales and credit decisions in certain contexts.
+Sarah: Yes. We can respect separation of duties. Not every loan officer needs the same view. Some may only need confirmation that a prior risk note exists and who owns it. Others, like certain underwriters, may need deeper detail.
+Robert: That could work, but I want to make sure we are not overcomplicating. The business goal is to reduce time spent assembling the file.
+Sarah: Let us make it measurable. If today assembling can take 3 5 days and officers spend about 30% of their week on it, what is an acceptable target? Not perfect, just directional.
+Robert: If we can cut that in half, it would be meaningful.
+Sarah: And for close rate, if there is a 15% drop in some channels, would you set a goal to recover part of that by improving responsiveness?
+Robert: Yes, but I would not attribute it solely to search.
+Sarah: Fair. We can track leading indicators like time to first confident response, time to assemble disclosures, and reduction in ticket volume to the specialized team.
+Linda: Ticket volume is a good proxy. If it drops, it suggests less human wall dependency. But we need to ensure it does not drop because people bypass controls.
+Sarah: Exactly. Which is why we pair productivity goals with compliance monitoring. If we see an increase in local copies or email attachments of NPI, that is a red flag.
+Robert: Alright. So what are the next steps?
+Sarah: I propose a 2 track assessment over a short window. Track 1 is workflow: interview a handful of top producing loan officers, a processor, and the specialized team that receives tickets. We map the file assembly journey and identify which artifacts cause the most waiting. Track 2 is governance and architecture: Linda, your team defines policy boundaries for NPI and acceptable indexing, and we assess LegacyCredit feasibility given no REST API. The output is a phased outcomes plan with guardrails, including how we avoid a HIPAA like incident for financial services, meaning SEC and FINRA audit risk.
+Linda: I can support that, with the understanding that LegacyCredit access is the hardest part and may require additional controls or even modernization.
+Robert: And I can support it if phase 1 delivers value quickly. If loan officers feel speed within Salesforce, Outlook, and the file share, you will earn credibility for the harder conversation.
+Sarah: That is the right expectation. Before we close, is there any non obvious constraint I should know? For example, restrictions on indexing email, or limitations on file share permissions?
+Linda: Email indexing can be sensitive because it may contain client NPI in the body. We need strict handling and possibly classification rules.
+Robert: And the file share is messy. Some folders are well governed, some are not. People have accumulated access over years.
+Sarah: That is very common. It suggests part of phase 1 is cleaning permission groups, because search should not reveal more than what a user already has. If permissions are overly broad today, search will make that visible, which could feel like a new risk even if it already existed.
+Linda: Exactly. That is why I am cautious.
+Sarah: Understood. We will treat permissions as first class, not an afterthought. I will send a summary of what I heard, the 2 track assessment plan, and the specific decisions we need from each of you to proceed.

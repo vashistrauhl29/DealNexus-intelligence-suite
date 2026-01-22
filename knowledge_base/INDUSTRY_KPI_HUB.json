@@ -1,0 +1,1992 @@
+{
+  "metadata": {
+    "document_name": "Industry KPI Hub",
+    "version": "1.0",
+    "description": "Comprehensive industry-specific knowledge base for grounding customer discovery assessments with relevant KPIs, pain points, compliance requirements, and legacy system patterns",
+    "owner": "outcomes_strategist",
+    "last_updated": "2026-01-16",
+    "total_industries": 52
+  },
+
+  "industries": {
+    "healthcare": {
+      "display_name": "Healthcare",
+      "aliases": ["health", "hospital", "medical", "clinical", "patient care"],
+      "primary_pain_points": [
+        "Patient handoff latency between departments",
+        "Clinical documentation burden reducing face time",
+        "Fragmented EHR systems across acquisitions",
+        "Knowledge silos between clinical and administrative staff",
+        "Compliance documentation audit preparation"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Patient Handoff Time",
+          "unit": "minutes",
+          "typical_baseline": 45,
+          "target_improvement": "30%"
+        },
+        {
+          "metric": "Documentation Time per Encounter",
+          "unit": "minutes",
+          "typical_baseline": 16,
+          "target_improvement": "25%"
+        },
+        {
+          "metric": "Time to Locate Clinical Protocols",
+          "unit": "minutes",
+          "typical_baseline": 12,
+          "target_improvement": "60%"
+        }
+      ],
+      "compliance_frameworks": ["HIPAA", "HITECH", "Joint Commission", "CMS Conditions of Participation", "State Health Privacy Laws"],
+      "typical_legacy_systems": [
+        {"name": "Epic", "type": "EHR", "api_availability": "rest_api"},
+        {"name": "Cerner", "type": "EHR", "api_availability": "rest_api"},
+        {"name": "MEDITECH", "type": "EHR", "api_availability": "limited"},
+        {"name": "McKesson", "type": "Supply Chain", "api_availability": "sql_only"},
+        {"name": "Custom clinical databases", "type": "legacy_database", "api_availability": "none"}
+      ]
+    },
+
+    "fintech": {
+      "display_name": "Financial Technology",
+      "aliases": ["fintech", "financial technology", "payments", "digital banking", "neobank"],
+      "primary_pain_points": [
+        "Transaction verification speed bottlenecks",
+        "Regulatory change management across jurisdictions",
+        "Fraud detection knowledge sharing",
+        "API documentation sprawl",
+        "Customer onboarding compliance friction"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Transaction Verification Speed",
+          "unit": "milliseconds",
+          "typical_baseline": 500,
+          "target_improvement": "40%"
+        },
+        {
+          "metric": "Compliance Update Response Time",
+          "unit": "days",
+          "typical_baseline": 14,
+          "target_improvement": "50%"
+        },
+        {
+          "metric": "Developer Documentation Search Time",
+          "unit": "minutes",
+          "typical_baseline": 15,
+          "target_improvement": "70%"
+        }
+      ],
+      "compliance_frameworks": ["PCI-DSS", "SOX", "BSA/AML", "GDPR", "CCPA", "State Money Transmitter Licenses"],
+      "typical_legacy_systems": [
+        {"name": "FIS", "type": "Core Banking", "api_availability": "rest_api"},
+        {"name": "Fiserv", "type": "Payments", "api_availability": "rest_api"},
+        {"name": "SWIFT", "type": "Messaging", "api_availability": "proprietary"},
+        {"name": "Custom risk engines", "type": "custom_application", "api_availability": "sql_only"}
+      ]
+    },
+
+    "legal": {
+      "display_name": "Legal Services",
+      "aliases": ["law firm", "legal", "attorney", "law practice", "litigation"],
+      "primary_pain_points": [
+        "Matter knowledge fragmentation across partners",
+        "Precedent research time for similar cases",
+        "Client intake information collection",
+        "Billing narrative standardization",
+        "Conflict of interest checking speed"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Precedent Research Time",
+          "unit": "hours",
+          "typical_baseline": 4,
+          "target_improvement": "50%"
+        },
+        {
+          "metric": "Conflict Check Duration",
+          "unit": "minutes",
+          "typical_baseline": 30,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "Time to First Draft",
+          "unit": "hours",
+          "typical_baseline": 8,
+          "target_improvement": "35%"
+        }
+      ],
+      "compliance_frameworks": ["ABA Model Rules", "State Bar Requirements", "Client Confidentiality Rules", "E-Discovery Standards"],
+      "typical_legacy_systems": [
+        {"name": "iManage", "type": "Document Management", "api_availability": "rest_api"},
+        {"name": "NetDocuments", "type": "Document Management", "api_availability": "rest_api"},
+        {"name": "Clio", "type": "Practice Management", "api_availability": "rest_api"},
+        {"name": "Elite 3E", "type": "Billing", "api_availability": "limited"},
+        {"name": "Legacy matter databases", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "manufacturing": {
+      "display_name": "Manufacturing",
+      "aliases": ["manufacturing", "factory", "production", "industrial", "plant operations"],
+      "primary_pain_points": [
+        "SCADA/ERP data integration gaps",
+        "Tribal knowledge loss from retiring workforce",
+        "Quality control documentation access",
+        "Supply chain visibility across tiers",
+        "Maintenance procedure documentation"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Mean Time to Repair (MTTR)",
+          "unit": "hours",
+          "typical_baseline": 4,
+          "target_improvement": "40%"
+        },
+        {
+          "metric": "Quality Incident Documentation Time",
+          "unit": "minutes",
+          "typical_baseline": 45,
+          "target_improvement": "50%"
+        },
+        {
+          "metric": "Supplier Information Lookup",
+          "unit": "minutes",
+          "typical_baseline": 20,
+          "target_improvement": "65%"
+        }
+      ],
+      "compliance_frameworks": ["ISO 9001", "ISO 14001", "OSHA", "EPA Regulations", "Industry-Specific Standards (FDA 21 CFR, AS9100)"],
+      "typical_legacy_systems": [
+        {"name": "SAP ERP", "type": "ERP", "api_availability": "rest_api"},
+        {"name": "Siemens SCADA", "type": "SCADA", "api_availability": "proprietary"},
+        {"name": "Rockwell FactoryTalk", "type": "MES", "api_availability": "limited"},
+        {"name": "Custom PLM systems", "type": "legacy_database", "api_availability": "sql_only"},
+        {"name": "Historian databases", "type": "time_series", "api_availability": "sql_only"}
+      ]
+    },
+
+    "higher_education": {
+      "display_name": "Higher Education",
+      "aliases": ["university", "college", "higher ed", "academia", "academic institution"],
+      "primary_pain_points": [
+        "Cross-department research collaboration barriers",
+        "Student services knowledge fragmentation",
+        "Accreditation documentation preparation",
+        "Faculty onboarding and policy access",
+        "Grant management information silos"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Student Query Resolution Time",
+          "unit": "minutes",
+          "typical_baseline": 25,
+          "target_improvement": "55%"
+        },
+        {
+          "metric": "Research Collaboration Discovery",
+          "unit": "days",
+          "typical_baseline": 14,
+          "target_improvement": "70%"
+        },
+        {
+          "metric": "Policy Information Retrieval",
+          "unit": "minutes",
+          "typical_baseline": 18,
+          "target_improvement": "60%"
+        }
+      ],
+      "compliance_frameworks": ["FERPA", "Title IX", "Accreditation Standards (AACSB, ABET)", "Research Compliance (IRB)", "HIPAA (for medical schools)"],
+      "typical_legacy_systems": [
+        {"name": "Banner", "type": "SIS", "api_availability": "rest_api"},
+        {"name": "Workday", "type": "HR/Finance", "api_availability": "rest_api"},
+        {"name": "PeopleSoft", "type": "ERP", "api_availability": "limited"},
+        {"name": "Canvas/Blackboard", "type": "LMS", "api_availability": "rest_api"},
+        {"name": "Legacy research databases", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "energy_utilities": {
+      "display_name": "Energy & Utilities",
+      "aliases": ["energy", "utilities", "power", "electric", "gas", "utility company"],
+      "primary_pain_points": [
+        "Grid operations documentation access",
+        "Regulatory compliance tracking across regions",
+        "Field technician knowledge access",
+        "Asset management documentation gaps",
+        "Emergency response procedure access"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Outage Response Time",
+          "unit": "minutes",
+          "typical_baseline": 45,
+          "target_improvement": "35%"
+        },
+        {
+          "metric": "Regulatory Filing Preparation",
+          "unit": "days",
+          "typical_baseline": 21,
+          "target_improvement": "40%"
+        },
+        {
+          "metric": "Field Procedure Lookup Time",
+          "unit": "minutes",
+          "typical_baseline": 12,
+          "target_improvement": "70%"
+        }
+      ],
+      "compliance_frameworks": ["FERC", "NERC CIP", "EPA Clean Air/Water Act", "State PUC Regulations", "OSHA", "Pipeline Safety Regulations"],
+      "typical_legacy_systems": [
+        {"name": "OSIsoft PI", "type": "Historian", "api_availability": "rest_api"},
+        {"name": "GE PowerOn", "type": "OMS", "api_availability": "limited"},
+        {"name": "Oracle Utilities", "type": "CIS", "api_availability": "rest_api"},
+        {"name": "Maximo", "type": "EAM", "api_availability": "rest_api"},
+        {"name": "Custom SCADA systems", "type": "SCADA", "api_availability": "proprietary"}
+      ]
+    },
+
+    "retail": {
+      "display_name": "Retail",
+      "aliases": ["retail", "store", "e-commerce", "ecommerce", "consumer goods", "shopping"],
+      "primary_pain_points": [
+        "Omnichannel inventory visibility",
+        "Store associate product knowledge",
+        "Seasonal hiring onboarding speed",
+        "Vendor compliance documentation",
+        "Customer service consistency across channels"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Associate Product Lookup Time",
+          "unit": "seconds",
+          "typical_baseline": 90,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "New Hire Time to Floor",
+          "unit": "days",
+          "typical_baseline": 7,
+          "target_improvement": "40%"
+        },
+        {
+          "metric": "Customer Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 8,
+          "target_improvement": "50%"
+        }
+      ],
+      "compliance_frameworks": ["PCI-DSS", "CCPA/GDPR", "FTC Guidelines", "State Consumer Protection Laws", "Product Safety Standards"],
+      "typical_legacy_systems": [
+        {"name": "SAP Retail", "type": "ERP", "api_availability": "rest_api"},
+        {"name": "Oracle Retail", "type": "Merchandising", "api_availability": "rest_api"},
+        {"name": "Manhattan Associates", "type": "WMS", "api_availability": "rest_api"},
+        {"name": "Legacy POS systems", "type": "Point of Sale", "api_availability": "limited"}
+      ]
+    },
+
+    "insurance": {
+      "display_name": "Insurance",
+      "aliases": ["insurance", "insurer", "underwriting", "claims", "actuarial"],
+      "primary_pain_points": [
+        "Underwriting guideline access speed",
+        "Claims processing knowledge silos",
+        "Agent product knowledge maintenance",
+        "Regulatory compliance across states",
+        "Legacy policy system integration"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Underwriting Decision Time",
+          "unit": "hours",
+          "typical_baseline": 48,
+          "target_improvement": "35%"
+        },
+        {
+          "metric": "Claims Adjuster Research Time",
+          "unit": "minutes",
+          "typical_baseline": 25,
+          "target_improvement": "55%"
+        },
+        {
+          "metric": "Agent Training Time",
+          "unit": "weeks",
+          "typical_baseline": 8,
+          "target_improvement": "30%"
+        }
+      ],
+      "compliance_frameworks": ["State Insurance Regulations", "NAIC Model Laws", "HIPAA (Health)", "SOX", "Anti-Money Laundering"],
+      "typical_legacy_systems": [
+        {"name": "Guidewire", "type": "Policy Admin", "api_availability": "rest_api"},
+        {"name": "Duck Creek", "type": "Policy Admin", "api_availability": "rest_api"},
+        {"name": "AS/400 legacy systems", "type": "legacy_database", "api_availability": "sql_only"},
+        {"name": "Custom actuarial systems", "type": "custom_application", "api_availability": "limited"}
+      ]
+    },
+
+    "banking": {
+      "display_name": "Banking",
+      "aliases": ["bank", "banking", "credit union", "financial institution", "commercial bank"],
+      "primary_pain_points": [
+        "Regulatory change management velocity",
+        "Branch employee policy knowledge",
+        "Fraud investigation documentation",
+        "Loan officer decisioning support",
+        "Merger/acquisition knowledge integration"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Loan Decision Time",
+          "unit": "hours",
+          "typical_baseline": 72,
+          "target_improvement": "40%"
+        },
+        {
+          "metric": "Compliance Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 35,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "Fraud Case Research Time",
+          "unit": "hours",
+          "typical_baseline": 3,
+          "target_improvement": "45%"
+        }
+      ],
+      "compliance_frameworks": ["OCC Regulations", "FDIC Requirements", "BSA/AML", "CRA", "TILA", "RESPA", "Dodd-Frank", "Basel III"],
+      "typical_legacy_systems": [
+        {"name": "Fiserv Core", "type": "Core Banking", "api_availability": "rest_api"},
+        {"name": "Jack Henry", "type": "Core Banking", "api_availability": "rest_api"},
+        {"name": "FIS", "type": "Core Banking", "api_availability": "rest_api"},
+        {"name": "Mainframe systems", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "pharmaceutical": {
+      "display_name": "Pharmaceutical",
+      "aliases": ["pharma", "pharmaceutical", "drug manufacturer", "life sciences", "biotech"],
+      "primary_pain_points": [
+        "Clinical trial documentation access",
+        "Regulatory submission coordination",
+        "Drug safety signal detection",
+        "Manufacturing batch record retrieval",
+        "Cross-functional R&D collaboration"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Regulatory Document Retrieval",
+          "unit": "minutes",
+          "typical_baseline": 30,
+          "target_improvement": "65%"
+        },
+        {
+          "metric": "Adverse Event Report Time",
+          "unit": "hours",
+          "typical_baseline": 24,
+          "target_improvement": "40%"
+        },
+        {
+          "metric": "Protocol Amendment Cycle Time",
+          "unit": "days",
+          "typical_baseline": 14,
+          "target_improvement": "35%"
+        }
+      ],
+      "compliance_frameworks": ["FDA 21 CFR Part 11", "ICH GCP", "EMA Regulations", "HIPAA", "Data Integrity Guidelines", "Pharmacovigilance Requirements"],
+      "typical_legacy_systems": [
+        {"name": "Veeva Vault", "type": "Document Management", "api_availability": "rest_api"},
+        {"name": "Medidata", "type": "Clinical Trials", "api_availability": "rest_api"},
+        {"name": "SAP", "type": "ERP", "api_availability": "rest_api"},
+        {"name": "Custom LIMS", "type": "Laboratory", "api_availability": "sql_only"},
+        {"name": "Legacy batch systems", "type": "legacy_database", "api_availability": "proprietary"}
+      ]
+    },
+
+    "telecommunications": {
+      "display_name": "Telecommunications",
+      "aliases": ["telecom", "telco", "wireless", "mobile carrier", "ISP"],
+      "primary_pain_points": [
+        "Network operations knowledge fragmentation",
+        "Customer service agent product knowledge",
+        "Technical documentation sprawl",
+        "Field technician procedure access",
+        "Regulatory compliance documentation"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Network Incident Resolution",
+          "unit": "minutes",
+          "typical_baseline": 60,
+          "target_improvement": "35%"
+        },
+        {
+          "metric": "Agent Handle Time",
+          "unit": "minutes",
+          "typical_baseline": 12,
+          "target_improvement": "25%"
+        },
+        {
+          "metric": "Technical Doc Search Time",
+          "unit": "minutes",
+          "typical_baseline": 15,
+          "target_improvement": "70%"
+        }
+      ],
+      "compliance_frameworks": ["FCC Regulations", "CPNI Requirements", "CALEA", "State PUC Regulations", "GDPR/CCPA"],
+      "typical_legacy_systems": [
+        {"name": "Amdocs", "type": "BSS/OSS", "api_availability": "rest_api"},
+        {"name": "Ericsson OSS", "type": "Network Management", "api_availability": "proprietary"},
+        {"name": "Custom provisioning systems", "type": "custom_application", "api_availability": "limited"},
+        {"name": "Legacy billing systems", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "government_federal": {
+      "display_name": "Federal Government",
+      "aliases": ["federal", "government", "federal agency", "public sector federal"],
+      "primary_pain_points": [
+        "Cross-agency information sharing",
+        "Policy interpretation consistency",
+        "Clearance-appropriate knowledge access",
+        "Onboarding for contractors/new hires",
+        "FOIA request processing"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Policy Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 45,
+          "target_improvement": "55%"
+        },
+        {
+          "metric": "FOIA Response Time",
+          "unit": "days",
+          "typical_baseline": 20,
+          "target_improvement": "30%"
+        },
+        {
+          "metric": "Employee Onboarding Time",
+          "unit": "weeks",
+          "typical_baseline": 6,
+          "target_improvement": "40%"
+        }
+      ],
+      "compliance_frameworks": ["FedRAMP", "FISMA", "NIST 800-53", "Section 508", "Privacy Act", "FOIA"],
+      "typical_legacy_systems": [
+        {"name": "Custom agency systems", "type": "custom_application", "api_availability": "limited"},
+        {"name": "Oracle Federal", "type": "ERP", "api_availability": "rest_api"},
+        {"name": "Legacy COBOL systems", "type": "mainframe", "api_availability": "none"},
+        {"name": "SharePoint Government", "type": "Collaboration", "api_availability": "rest_api"}
+      ]
+    },
+
+    "government_state_local": {
+      "display_name": "State & Local Government",
+      "aliases": ["state government", "local government", "municipal", "county", "city government"],
+      "primary_pain_points": [
+        "Constituent service knowledge gaps",
+        "Inter-departmental information silos",
+        "Public records request processing",
+        "Permit/license process documentation",
+        "Budget documentation access"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Constituent Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 20,
+          "target_improvement": "50%"
+        },
+        {
+          "metric": "Permit Processing Time",
+          "unit": "days",
+          "typical_baseline": 15,
+          "target_improvement": "35%"
+        },
+        {
+          "metric": "Public Records Response Time",
+          "unit": "days",
+          "typical_baseline": 10,
+          "target_improvement": "40%"
+        }
+      ],
+      "compliance_frameworks": ["StateRAMP", "State Privacy Laws", "Open Records Laws", "ADA Compliance", "Public Meeting Laws"],
+      "typical_legacy_systems": [
+        {"name": "Tyler Technologies", "type": "ERP", "api_availability": "rest_api"},
+        {"name": "Accela", "type": "Permitting", "api_availability": "rest_api"},
+        {"name": "Custom departmental databases", "type": "legacy_database", "api_availability": "sql_only"},
+        {"name": "Legacy mainframe systems", "type": "mainframe", "api_availability": "none"}
+      ]
+    },
+
+    "defense_aerospace": {
+      "display_name": "Defense & Aerospace",
+      "aliases": ["defense", "aerospace", "military contractor", "DoD contractor", "defense contractor"],
+      "primary_pain_points": [
+        "Classified/unclassified information boundary management",
+        "Technical data package access",
+        "Program documentation retrieval",
+        "Supply chain risk documentation",
+        "Engineering change order tracking"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Technical Data Retrieval",
+          "unit": "minutes",
+          "typical_baseline": 35,
+          "target_improvement": "55%"
+        },
+        {
+          "metric": "Engineering Query Resolution",
+          "unit": "hours",
+          "typical_baseline": 4,
+          "target_improvement": "45%"
+        },
+        {
+          "metric": "Proposal Response Time",
+          "unit": "days",
+          "typical_baseline": 30,
+          "target_improvement": "25%"
+        }
+      ],
+      "compliance_frameworks": ["ITAR", "EAR", "DFARS", "NIST 800-171", "CMMC", "AS9100"],
+      "typical_legacy_systems": [
+        {"name": "Windchill", "type": "PLM", "api_availability": "rest_api"},
+        {"name": "Teamcenter", "type": "PLM", "api_availability": "rest_api"},
+        {"name": "SAP Defense", "type": "ERP", "api_availability": "rest_api"},
+        {"name": "Custom engineering databases", "type": "custom_application", "api_availability": "sql_only"}
+      ]
+    },
+
+    "automotive": {
+      "display_name": "Automotive",
+      "aliases": ["automotive", "auto manufacturer", "OEM", "car manufacturer", "vehicle"],
+      "primary_pain_points": [
+        "Supply chain documentation across tiers",
+        "Quality management system access",
+        "Engineering specification retrieval",
+        "Dealer network knowledge sharing",
+        "Recall management documentation"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Engineering Spec Lookup",
+          "unit": "minutes",
+          "typical_baseline": 25,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "Quality Issue Resolution",
+          "unit": "hours",
+          "typical_baseline": 8,
+          "target_improvement": "40%"
+        },
+        {
+          "metric": "Dealer Query Response",
+          "unit": "minutes",
+          "typical_baseline": 15,
+          "target_improvement": "55%"
+        }
+      ],
+      "compliance_frameworks": ["IATF 16949", "ISO 26262", "TREAD Act", "EPA Emissions", "NHTSA Regulations"],
+      "typical_legacy_systems": [
+        {"name": "SAP Automotive", "type": "ERP", "api_availability": "rest_api"},
+        {"name": "Siemens Teamcenter", "type": "PLM", "api_availability": "rest_api"},
+        {"name": "CDK Global", "type": "Dealer Management", "api_availability": "rest_api"},
+        {"name": "Legacy quality databases", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "media_entertainment": {
+      "display_name": "Media & Entertainment",
+      "aliases": ["media", "entertainment", "streaming", "broadcast", "content production"],
+      "primary_pain_points": [
+        "Content asset metadata search",
+        "Rights and licensing documentation",
+        "Production workflow knowledge",
+        "Creative collaboration across teams",
+        "Compliance documentation for content"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Asset Discovery Time",
+          "unit": "minutes",
+          "typical_baseline": 20,
+          "target_improvement": "65%"
+        },
+        {
+          "metric": "Rights Clearance Research",
+          "unit": "hours",
+          "typical_baseline": 3,
+          "target_improvement": "50%"
+        },
+        {
+          "metric": "Production Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 12,
+          "target_improvement": "55%"
+        }
+      ],
+      "compliance_frameworks": ["FCC Broadcasting", "Copyright Law", "GDPR/CCPA", "COPPA", "Accessibility Standards"],
+      "typical_legacy_systems": [
+        {"name": "Avid", "type": "Media Production", "api_availability": "rest_api"},
+        {"name": "DAM systems", "type": "Asset Management", "api_availability": "rest_api"},
+        {"name": "Rights management databases", "type": "custom_application", "api_availability": "limited"},
+        {"name": "Legacy archive systems", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "hospitality": {
+      "display_name": "Hospitality",
+      "aliases": ["hotel", "hospitality", "lodging", "resort", "hotel chain"],
+      "primary_pain_points": [
+        "Property-level knowledge sharing",
+        "Guest service standard documentation",
+        "Franchise operations consistency",
+        "Seasonal staffing onboarding",
+        "Brand standard compliance"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Guest Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 8,
+          "target_improvement": "50%"
+        },
+        {
+          "metric": "New Hire Training Time",
+          "unit": "days",
+          "typical_baseline": 14,
+          "target_improvement": "35%"
+        },
+        {
+          "metric": "Policy Lookup Time",
+          "unit": "minutes",
+          "typical_baseline": 10,
+          "target_improvement": "60%"
+        }
+      ],
+      "compliance_frameworks": ["PCI-DSS", "ADA", "Health & Safety Codes", "Franchise Agreement Standards", "Brand Standards"],
+      "typical_legacy_systems": [
+        {"name": "Opera PMS", "type": "Property Management", "api_availability": "rest_api"},
+        {"name": "Amadeus", "type": "Reservations", "api_availability": "rest_api"},
+        {"name": "Custom loyalty systems", "type": "custom_application", "api_availability": "limited"},
+        {"name": "Legacy F&B systems", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "real_estate": {
+      "display_name": "Real Estate",
+      "aliases": ["real estate", "property management", "REIT", "commercial real estate", "CRE"],
+      "primary_pain_points": [
+        "Property documentation retrieval",
+        "Lease agreement knowledge access",
+        "Market analysis data fragmentation",
+        "Transaction document management",
+        "Regulatory compliance tracking"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Lease Document Retrieval",
+          "unit": "minutes",
+          "typical_baseline": 15,
+          "target_improvement": "65%"
+        },
+        {
+          "metric": "Deal Analysis Time",
+          "unit": "hours",
+          "typical_baseline": 6,
+          "target_improvement": "40%"
+        },
+        {
+          "metric": "Tenant Query Response",
+          "unit": "minutes",
+          "typical_baseline": 20,
+          "target_improvement": "50%"
+        }
+      ],
+      "compliance_frameworks": ["Fair Housing Act", "ADA", "Local Zoning Laws", "Environmental Regulations", "SEC (for REITs)"],
+      "typical_legacy_systems": [
+        {"name": "Yardi", "type": "Property Management", "api_availability": "rest_api"},
+        {"name": "MRI Software", "type": "Property Management", "api_availability": "rest_api"},
+        {"name": "CoStar", "type": "Market Data", "api_availability": "rest_api"},
+        {"name": "Legacy lease databases", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "logistics_transportation": {
+      "display_name": "Logistics & Transportation",
+      "aliases": ["logistics", "transportation", "shipping", "freight", "supply chain", "3PL"],
+      "primary_pain_points": [
+        "Shipment tracking documentation",
+        "Carrier compliance documentation",
+        "Route optimization knowledge",
+        "Customs clearance procedures",
+        "Driver/operator procedure access"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Shipment Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 12,
+          "target_improvement": "55%"
+        },
+        {
+          "metric": "Customs Documentation Time",
+          "unit": "hours",
+          "typical_baseline": 4,
+          "target_improvement": "45%"
+        },
+        {
+          "metric": "Driver Procedure Lookup",
+          "unit": "minutes",
+          "typical_baseline": 8,
+          "target_improvement": "65%"
+        }
+      ],
+      "compliance_frameworks": ["DOT Regulations", "FMCSA", "Customs Regulations", "Hazmat Requirements", "Hours of Service"],
+      "typical_legacy_systems": [
+        {"name": "SAP TM", "type": "Transportation Management", "api_availability": "rest_api"},
+        {"name": "Oracle Transportation", "type": "TMS", "api_availability": "rest_api"},
+        {"name": "Blue Yonder", "type": "Supply Chain", "api_availability": "rest_api"},
+        {"name": "Legacy dispatch systems", "type": "custom_application", "api_availability": "sql_only"}
+      ]
+    },
+
+    "agriculture": {
+      "display_name": "Agriculture",
+      "aliases": ["agriculture", "agribusiness", "farming", "agtech", "food production"],
+      "primary_pain_points": [
+        "Crop management documentation",
+        "Supply chain traceability",
+        "Regulatory compliance tracking",
+        "Equipment maintenance records",
+        "Seasonal worker training"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Compliance Documentation Time",
+          "unit": "hours",
+          "typical_baseline": 5,
+          "target_improvement": "45%"
+        },
+        {
+          "metric": "Equipment Procedure Lookup",
+          "unit": "minutes",
+          "typical_baseline": 15,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "Traceability Query Response",
+          "unit": "minutes",
+          "typical_baseline": 20,
+          "target_improvement": "55%"
+        }
+      ],
+      "compliance_frameworks": ["USDA Regulations", "FDA Food Safety", "EPA Pesticide Regulations", "Organic Certification", "FSMA"],
+      "typical_legacy_systems": [
+        {"name": "John Deere Operations Center", "type": "Farm Management", "api_availability": "rest_api"},
+        {"name": "Granular", "type": "Farm Management", "api_availability": "rest_api"},
+        {"name": "Custom commodity systems", "type": "legacy_database", "api_availability": "sql_only"},
+        {"name": "Legacy inventory systems", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "construction": {
+      "display_name": "Construction",
+      "aliases": ["construction", "general contractor", "builder", "engineering construction"],
+      "primary_pain_points": [
+        "Project documentation access across sites",
+        "Safety procedure documentation",
+        "Subcontractor compliance tracking",
+        "Change order documentation",
+        "Building code reference access"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Document Retrieval Time",
+          "unit": "minutes",
+          "typical_baseline": 20,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "Safety Procedure Lookup",
+          "unit": "minutes",
+          "typical_baseline": 8,
+          "target_improvement": "65%"
+        },
+        {
+          "metric": "RFI Response Time",
+          "unit": "hours",
+          "typical_baseline": 24,
+          "target_improvement": "40%"
+        }
+      ],
+      "compliance_frameworks": ["OSHA", "Building Codes", "Environmental Permits", "Bonding Requirements", "State Contractor Licensing"],
+      "typical_legacy_systems": [
+        {"name": "Procore", "type": "Project Management", "api_availability": "rest_api"},
+        {"name": "Autodesk Construction Cloud", "type": "BIM/Project", "api_availability": "rest_api"},
+        {"name": "Sage 300", "type": "Accounting", "api_availability": "limited"},
+        {"name": "Custom estimating systems", "type": "custom_application", "api_availability": "sql_only"}
+      ]
+    },
+
+    "food_beverage": {
+      "display_name": "Food & Beverage",
+      "aliases": ["food", "beverage", "CPG", "food manufacturing", "food service"],
+      "primary_pain_points": [
+        "Food safety documentation",
+        "Recipe and formulation management",
+        "Supplier quality documentation",
+        "Allergen compliance tracking",
+        "Recall management procedures"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Quality Document Retrieval",
+          "unit": "minutes",
+          "typical_baseline": 15,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "Supplier Compliance Check",
+          "unit": "hours",
+          "typical_baseline": 2,
+          "target_improvement": "50%"
+        },
+        {
+          "metric": "Recall Response Time",
+          "unit": "hours",
+          "typical_baseline": 8,
+          "target_improvement": "35%"
+        }
+      ],
+      "compliance_frameworks": ["FDA FSMA", "HACCP", "SQF", "BRC", "Organic/Kosher/Halal Certifications", "Allergen Labeling"],
+      "typical_legacy_systems": [
+        {"name": "SAP Food & Beverage", "type": "ERP", "api_availability": "rest_api"},
+        {"name": "TraceGains", "type": "Compliance", "api_availability": "rest_api"},
+        {"name": "Custom formulation systems", "type": "custom_application", "api_availability": "sql_only"},
+        {"name": "Legacy batch systems", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "mining": {
+      "display_name": "Mining",
+      "aliases": ["mining", "minerals", "extraction", "quarry", "mineral resources"],
+      "primary_pain_points": [
+        "Safety procedure documentation access",
+        "Equipment maintenance knowledge",
+        "Environmental compliance tracking",
+        "Geological data management",
+        "Shift handoff documentation"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Safety Procedure Lookup",
+          "unit": "minutes",
+          "typical_baseline": 12,
+          "target_improvement": "65%"
+        },
+        {
+          "metric": "Equipment MTTR",
+          "unit": "hours",
+          "typical_baseline": 6,
+          "target_improvement": "35%"
+        },
+        {
+          "metric": "Compliance Report Time",
+          "unit": "days",
+          "typical_baseline": 5,
+          "target_improvement": "40%"
+        }
+      ],
+      "compliance_frameworks": ["MSHA", "EPA Mining Regulations", "State Mining Permits", "Environmental Impact Requirements"],
+      "typical_legacy_systems": [
+        {"name": "SAP Mining", "type": "ERP", "api_availability": "rest_api"},
+        {"name": "Hexagon Mining", "type": "Fleet Management", "api_availability": "limited"},
+        {"name": "Custom geological databases", "type": "legacy_database", "api_availability": "sql_only"},
+        {"name": "Legacy maintenance systems", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "nonprofit": {
+      "display_name": "Nonprofit",
+      "aliases": ["nonprofit", "NGO", "charity", "foundation", "not-for-profit"],
+      "primary_pain_points": [
+        "Grant documentation management",
+        "Donor relationship knowledge",
+        "Program outcome documentation",
+        "Volunteer coordination knowledge",
+        "Compliance reporting for funders"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Grant Report Preparation",
+          "unit": "hours",
+          "typical_baseline": 8,
+          "target_improvement": "45%"
+        },
+        {
+          "metric": "Donor Query Response",
+          "unit": "minutes",
+          "typical_baseline": 15,
+          "target_improvement": "55%"
+        },
+        {
+          "metric": "Program Documentation Time",
+          "unit": "hours",
+          "typical_baseline": 4,
+          "target_improvement": "40%"
+        }
+      ],
+      "compliance_frameworks": ["IRS 990 Requirements", "Grant Compliance", "GAAP for Nonprofits", "State Registration Requirements"],
+      "typical_legacy_systems": [
+        {"name": "Salesforce NPSP", "type": "CRM", "api_availability": "rest_api"},
+        {"name": "Blackbaud", "type": "Fundraising", "api_availability": "rest_api"},
+        {"name": "Custom grant databases", "type": "legacy_database", "api_availability": "sql_only"},
+        {"name": "Legacy donor systems", "type": "legacy_database", "api_availability": "limited"}
+      ]
+    },
+
+    "professional_services": {
+      "display_name": "Professional Services",
+      "aliases": ["consulting", "professional services", "advisory", "consulting firm"],
+      "primary_pain_points": [
+        "Engagement knowledge reuse",
+        "Expert location across practices",
+        "Proposal and methodology access",
+        "Client relationship documentation",
+        "Utilization and resource planning"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Proposal Development Time",
+          "unit": "hours",
+          "typical_baseline": 20,
+          "target_improvement": "40%"
+        },
+        {
+          "metric": "Expert Finder Time",
+          "unit": "minutes",
+          "typical_baseline": 30,
+          "target_improvement": "70%"
+        },
+        {
+          "metric": "Methodology Lookup",
+          "unit": "minutes",
+          "typical_baseline": 15,
+          "target_improvement": "60%"
+        }
+      ],
+      "compliance_frameworks": ["Professional Licensing", "Independence Requirements", "Client Confidentiality", "SOC 2 (for tech consulting)"],
+      "typical_legacy_systems": [
+        {"name": "Salesforce", "type": "CRM", "api_availability": "rest_api"},
+        {"name": "FinancialForce PSA", "type": "PSA", "api_availability": "rest_api"},
+        {"name": "Custom knowledge repositories", "type": "custom_application", "api_availability": "limited"},
+        {"name": "SharePoint", "type": "Document Management", "api_availability": "rest_api"}
+      ]
+    },
+
+    "technology_software": {
+      "display_name": "Technology & Software",
+      "aliases": ["tech", "software", "SaaS", "technology company", "software company"],
+      "primary_pain_points": [
+        "Documentation sprawl across wikis",
+        "Engineering knowledge silos",
+        "Customer support knowledge access",
+        "Onboarding new engineers",
+        "API and integration documentation"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Developer Documentation Search",
+          "unit": "minutes",
+          "typical_baseline": 12,
+          "target_improvement": "70%"
+        },
+        {
+          "metric": "New Engineer Ramp Time",
+          "unit": "weeks",
+          "typical_baseline": 8,
+          "target_improvement": "35%"
+        },
+        {
+          "metric": "Support Ticket Resolution",
+          "unit": "minutes",
+          "typical_baseline": 25,
+          "target_improvement": "45%"
+        }
+      ],
+      "compliance_frameworks": ["SOC 2", "ISO 27001", "GDPR/CCPA", "HIPAA (if health data)", "PCI-DSS (if payments)"],
+      "typical_legacy_systems": [
+        {"name": "Confluence", "type": "Wiki", "api_availability": "rest_api"},
+        {"name": "Notion", "type": "Wiki", "api_availability": "rest_api"},
+        {"name": "GitHub/GitLab", "type": "Code Repository", "api_availability": "rest_api"},
+        {"name": "Zendesk", "type": "Support", "api_availability": "rest_api"},
+        {"name": "Custom internal tools", "type": "custom_application", "api_availability": "rest_api"}
+      ]
+    },
+
+    "biotech": {
+      "display_name": "Biotechnology",
+      "aliases": ["biotech", "biotechnology", "life sciences", "genomics", "biologics"],
+      "primary_pain_points": [
+        "Research documentation management",
+        "Lab protocol access",
+        "Regulatory pathway documentation",
+        "IP and patent documentation",
+        "Clinical trial knowledge"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Protocol Retrieval Time",
+          "unit": "minutes",
+          "typical_baseline": 20,
+          "target_improvement": "65%"
+        },
+        {
+          "metric": "Research Documentation Time",
+          "unit": "hours",
+          "typical_baseline": 3,
+          "target_improvement": "40%"
+        },
+        {
+          "metric": "Regulatory Query Resolution",
+          "unit": "hours",
+          "typical_baseline": 4,
+          "target_improvement": "50%"
+        }
+      ],
+      "compliance_frameworks": ["FDA Biologics", "ICH Guidelines", "Biosafety Regulations", "Patent Law", "IRB Requirements"],
+      "typical_legacy_systems": [
+        {"name": "Benchling", "type": "Lab Platform", "api_availability": "rest_api"},
+        {"name": "LIMS systems", "type": "Laboratory", "api_availability": "limited"},
+        {"name": "Electronic Lab Notebooks", "type": "Documentation", "api_availability": "rest_api"},
+        {"name": "Custom research databases", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "medical_devices": {
+      "display_name": "Medical Devices",
+      "aliases": ["medical devices", "medtech", "medical equipment", "diagnostics"],
+      "primary_pain_points": [
+        "Design history file access",
+        "Complaint handling documentation",
+        "Manufacturing procedure access",
+        "Regulatory submission documentation",
+        "Field service knowledge"
+      ],
+      "success_metrics": [
+        {
+          "metric": "DHF Document Retrieval",
+          "unit": "minutes",
+          "typical_baseline": 25,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "Complaint Investigation Time",
+          "unit": "hours",
+          "typical_baseline": 8,
+          "target_improvement": "40%"
+        },
+        {
+          "metric": "Service Procedure Lookup",
+          "unit": "minutes",
+          "typical_baseline": 12,
+          "target_improvement": "65%"
+        }
+      ],
+      "compliance_frameworks": ["FDA 21 CFR 820", "ISO 13485", "MDR/IVDR (EU)", "UDI Requirements", "Post-Market Surveillance"],
+      "typical_legacy_systems": [
+        {"name": "Veeva Vault QMS", "type": "Quality Management", "api_availability": "rest_api"},
+        {"name": "Arena PLM", "type": "PLM", "api_availability": "rest_api"},
+        {"name": "SAP", "type": "ERP", "api_availability": "rest_api"},
+        {"name": "Custom complaint databases", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "gaming": {
+      "display_name": "Gaming",
+      "aliases": ["gaming", "video games", "game development", "esports", "game studio"],
+      "primary_pain_points": [
+        "Game design documentation access",
+        "Asset management across projects",
+        "QA knowledge sharing",
+        "Live ops documentation",
+        "Community management knowledge"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Design Doc Retrieval",
+          "unit": "minutes",
+          "typical_baseline": 15,
+          "target_improvement": "65%"
+        },
+        {
+          "metric": "Bug Resolution Time",
+          "unit": "hours",
+          "typical_baseline": 6,
+          "target_improvement": "35%"
+        },
+        {
+          "metric": "New Hire Ramp Time",
+          "unit": "weeks",
+          "typical_baseline": 6,
+          "target_improvement": "40%"
+        }
+      ],
+      "compliance_frameworks": ["ESRB/PEGI Ratings", "COPPA", "GDPR/CCPA", "Loot Box Regulations", "Platform Requirements"],
+      "typical_legacy_systems": [
+        {"name": "Perforce", "type": "Version Control", "api_availability": "rest_api"},
+        {"name": "Jira", "type": "Project Management", "api_availability": "rest_api"},
+        {"name": "Custom asset databases", "type": "custom_application", "api_availability": "limited"},
+        {"name": "Wiki systems", "type": "Documentation", "api_availability": "rest_api"}
+      ]
+    },
+
+    "investment_management": {
+      "display_name": "Investment Management",
+      "aliases": ["asset management", "investment", "hedge fund", "private equity", "wealth management"],
+      "primary_pain_points": [
+        "Research documentation access",
+        "Investment committee documentation",
+        "Compliance monitoring knowledge",
+        "Client reporting documentation",
+        "Deal documentation management"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Research Retrieval Time",
+          "unit": "minutes",
+          "typical_baseline": 20,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "Compliance Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 30,
+          "target_improvement": "55%"
+        },
+        {
+          "metric": "Client Report Preparation",
+          "unit": "hours",
+          "typical_baseline": 4,
+          "target_improvement": "40%"
+        }
+      ],
+      "compliance_frameworks": ["SEC Regulations", "Investment Company Act", "Advisers Act", "FINRA Rules", "DOL Fiduciary Rule"],
+      "typical_legacy_systems": [
+        {"name": "Bloomberg Terminal", "type": "Market Data", "api_availability": "proprietary"},
+        {"name": "FactSet", "type": "Research", "api_availability": "rest_api"},
+        {"name": "Charles River", "type": "Order Management", "api_availability": "limited"},
+        {"name": "Custom research databases", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "chemicals": {
+      "display_name": "Chemicals",
+      "aliases": ["chemicals", "chemical manufacturing", "specialty chemicals", "petrochemicals"],
+      "primary_pain_points": [
+        "Safety data sheet management",
+        "Process documentation access",
+        "Regulatory compliance tracking",
+        "R&D knowledge sharing",
+        "Quality control documentation"
+      ],
+      "success_metrics": [
+        {
+          "metric": "SDS Retrieval Time",
+          "unit": "seconds",
+          "typical_baseline": 60,
+          "target_improvement": "70%"
+        },
+        {
+          "metric": "Process Documentation Lookup",
+          "unit": "minutes",
+          "typical_baseline": 15,
+          "target_improvement": "55%"
+        },
+        {
+          "metric": "Regulatory Query Resolution",
+          "unit": "hours",
+          "typical_baseline": 2,
+          "target_improvement": "45%"
+        }
+      ],
+      "compliance_frameworks": ["EPA TSCA", "OSHA PSM", "REACH (EU)", "GHS Labeling", "State Environmental Regulations"],
+      "typical_legacy_systems": [
+        {"name": "SAP Chemical", "type": "ERP", "api_availability": "rest_api"},
+        {"name": "Aspen HYSYS", "type": "Process Simulation", "api_availability": "limited"},
+        {"name": "Custom formulation systems", "type": "legacy_database", "api_availability": "sql_only"},
+        {"name": "Legacy batch systems", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "fashion_apparel": {
+      "display_name": "Fashion & Apparel",
+      "aliases": ["fashion", "apparel", "clothing", "textile", "fashion brand"],
+      "primary_pain_points": [
+        "Product development documentation",
+        "Supply chain visibility",
+        "Design asset management",
+        "Sustainability compliance tracking",
+        "Retail operations knowledge"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Design Asset Retrieval",
+          "unit": "minutes",
+          "typical_baseline": 20,
+          "target_improvement": "65%"
+        },
+        {
+          "metric": "Supplier Query Resolution",
+          "unit": "hours",
+          "typical_baseline": 4,
+          "target_improvement": "50%"
+        },
+        {
+          "metric": "Product Info Lookup",
+          "unit": "minutes",
+          "typical_baseline": 10,
+          "target_improvement": "60%"
+        }
+      ],
+      "compliance_frameworks": ["CPSIA", "California Prop 65", "Import Regulations", "Sustainability Standards", "Labor Compliance"],
+      "typical_legacy_systems": [
+        {"name": "Centric PLM", "type": "PLM", "api_availability": "rest_api"},
+        {"name": "SAP Apparel", "type": "ERP", "api_availability": "rest_api"},
+        {"name": "Custom design databases", "type": "custom_application", "api_availability": "limited"},
+        {"name": "Legacy inventory systems", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "hr_services": {
+      "display_name": "HR Services",
+      "aliases": ["HR", "human resources", "staffing", "recruiting", "HR outsourcing"],
+      "primary_pain_points": [
+        "Policy documentation access",
+        "Candidate knowledge management",
+        "Compliance requirement tracking",
+        "Employee handbook maintenance",
+        "Benefits information access"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Policy Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 12,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "Candidate Profile Retrieval",
+          "unit": "minutes",
+          "typical_baseline": 8,
+          "target_improvement": "55%"
+        },
+        {
+          "metric": "Compliance Answer Time",
+          "unit": "minutes",
+          "typical_baseline": 20,
+          "target_improvement": "50%"
+        }
+      ],
+      "compliance_frameworks": ["EEOC", "FMLA", "ADA", "FLSA", "State Employment Laws", "ERISA"],
+      "typical_legacy_systems": [
+        {"name": "Workday", "type": "HCM", "api_availability": "rest_api"},
+        {"name": "ADP", "type": "Payroll/HR", "api_availability": "rest_api"},
+        {"name": "Greenhouse", "type": "ATS", "api_availability": "rest_api"},
+        {"name": "Custom HRIS", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "k12_education": {
+      "display_name": "K-12 Education",
+      "aliases": ["K-12", "school", "school district", "primary education", "secondary education"],
+      "primary_pain_points": [
+        "Curriculum documentation access",
+        "Student information silos",
+        "Policy and procedure documentation",
+        "Parent communication knowledge",
+        "Substitute teacher onboarding"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Curriculum Resource Lookup",
+          "unit": "minutes",
+          "typical_baseline": 15,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "Policy Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 18,
+          "target_improvement": "55%"
+        },
+        {
+          "metric": "Sub Teacher Prep Time",
+          "unit": "minutes",
+          "typical_baseline": 30,
+          "target_improvement": "45%"
+        }
+      ],
+      "compliance_frameworks": ["FERPA", "IDEA", "Title I", "State Education Standards", "Child Protection Laws"],
+      "typical_legacy_systems": [
+        {"name": "PowerSchool", "type": "SIS", "api_availability": "rest_api"},
+        {"name": "Infinite Campus", "type": "SIS", "api_availability": "rest_api"},
+        {"name": "Google Workspace for Education", "type": "Collaboration", "api_availability": "rest_api"},
+        {"name": "Custom district databases", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "sports_entertainment": {
+      "display_name": "Sports & Entertainment",
+      "aliases": ["sports", "sports team", "entertainment venue", "stadium", "league"],
+      "primary_pain_points": [
+        "Event operations documentation",
+        "Venue management knowledge",
+        "Sponsor contract documentation",
+        "Fan engagement knowledge",
+        "Seasonal staff onboarding"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Event Procedure Lookup",
+          "unit": "minutes",
+          "typical_baseline": 12,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "Sponsor Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 20,
+          "target_improvement": "50%"
+        },
+        {
+          "metric": "New Staff Training Time",
+          "unit": "hours",
+          "typical_baseline": 8,
+          "target_improvement": "35%"
+        }
+      ],
+      "compliance_frameworks": ["ADA Venue Requirements", "Alcohol Licensing", "Safety Regulations", "Labor Laws", "Broadcasting Rights"],
+      "typical_legacy_systems": [
+        {"name": "Ticketmaster", "type": "Ticketing", "api_availability": "rest_api"},
+        {"name": "Salesforce", "type": "CRM", "api_availability": "rest_api"},
+        {"name": "Custom venue systems", "type": "custom_application", "api_availability": "limited"},
+        {"name": "Legacy operations databases", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "oil_gas": {
+      "display_name": "Oil & Gas",
+      "aliases": ["oil", "gas", "petroleum", "upstream", "downstream", "midstream"],
+      "primary_pain_points": [
+        "Field operations documentation",
+        "Safety procedure access",
+        "Equipment maintenance knowledge",
+        "Regulatory compliance documentation",
+        "Geological data management"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Safety Procedure Lookup",
+          "unit": "minutes",
+          "typical_baseline": 10,
+          "target_improvement": "65%"
+        },
+        {
+          "metric": "Equipment Documentation Time",
+          "unit": "minutes",
+          "typical_baseline": 20,
+          "target_improvement": "55%"
+        },
+        {
+          "metric": "Compliance Report Time",
+          "unit": "days",
+          "typical_baseline": 7,
+          "target_improvement": "40%"
+        }
+      ],
+      "compliance_frameworks": ["EPA Regulations", "OSHA PSM", "PHMSA Pipeline Safety", "State Oil & Gas Commissions", "SEC Reserves Reporting"],
+      "typical_legacy_systems": [
+        {"name": "SAP Oil & Gas", "type": "ERP", "api_availability": "rest_api"},
+        {"name": "Schlumberger Petrel", "type": "Reservoir", "api_availability": "limited"},
+        {"name": "OSIsoft PI", "type": "Historian", "api_availability": "rest_api"},
+        {"name": "Custom drilling databases", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "cruise_maritime": {
+      "display_name": "Cruise & Maritime",
+      "aliases": ["cruise", "maritime", "shipping", "cruise line", "vessel operations"],
+      "primary_pain_points": [
+        "Vessel operations documentation",
+        "Safety and emergency procedures",
+        "Port compliance documentation",
+        "Guest services knowledge",
+        "Crew onboarding documentation"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Safety Procedure Lookup",
+          "unit": "seconds",
+          "typical_baseline": 90,
+          "target_improvement": "65%"
+        },
+        {
+          "metric": "Port Compliance Documentation",
+          "unit": "hours",
+          "typical_baseline": 3,
+          "target_improvement": "45%"
+        },
+        {
+          "metric": "Guest Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 8,
+          "target_improvement": "50%"
+        }
+      ],
+      "compliance_frameworks": ["IMO SOLAS", "MARPOL", "Port State Control", "CDC Vessel Sanitation", "Flag State Requirements"],
+      "typical_legacy_systems": [
+        {"name": "AMOS", "type": "Fleet Management", "api_availability": "limited"},
+        {"name": "Fidelio Cruise", "type": "Guest Management", "api_availability": "rest_api"},
+        {"name": "Custom navigation systems", "type": "custom_application", "api_availability": "proprietary"},
+        {"name": "Legacy maintenance databases", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "call_center": {
+      "display_name": "Call Center / BPO",
+      "aliases": ["call center", "BPO", "contact center", "customer service", "outsourcing"],
+      "primary_pain_points": [
+        "Agent knowledge base fragmentation",
+        "Call script and procedure access",
+        "Multi-client knowledge separation",
+        "Agent training documentation",
+        "Quality assurance documentation"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Average Handle Time",
+          "unit": "seconds",
+          "typical_baseline": 420,
+          "target_improvement": "20%"
+        },
+        {
+          "metric": "First Call Resolution",
+          "unit": "percentage",
+          "typical_baseline": 65,
+          "target_improvement": "15%"
+        },
+        {
+          "metric": "Agent Training Time",
+          "unit": "weeks",
+          "typical_baseline": 4,
+          "target_improvement": "35%"
+        }
+      ],
+      "compliance_frameworks": ["TCPA", "PCI-DSS", "HIPAA (for healthcare)", "GDPR/CCPA", "State Recording Laws"],
+      "typical_legacy_systems": [
+        {"name": "Genesys", "type": "Contact Center", "api_availability": "rest_api"},
+        {"name": "Five9", "type": "Contact Center", "api_availability": "rest_api"},
+        {"name": "Zendesk", "type": "CRM", "api_availability": "rest_api"},
+        {"name": "Custom knowledge bases", "type": "custom_application", "api_availability": "limited"}
+      ]
+    },
+
+    "semiconductor": {
+      "display_name": "Semiconductor",
+      "aliases": ["semiconductor", "chip", "fab", "integrated circuits", "foundry"],
+      "primary_pain_points": [
+        "Process documentation access",
+        "Equipment maintenance knowledge",
+        "Yield management documentation",
+        "Design specification retrieval",
+        "Cleanroom procedure documentation"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Process Documentation Lookup",
+          "unit": "minutes",
+          "typical_baseline": 20,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "Equipment MTTR",
+          "unit": "hours",
+          "typical_baseline": 4,
+          "target_improvement": "35%"
+        },
+        {
+          "metric": "Engineering Query Resolution",
+          "unit": "hours",
+          "typical_baseline": 2,
+          "target_improvement": "50%"
+        }
+      ],
+      "compliance_frameworks": ["ITAR/EAR", "ISO 14644 (Cleanroom)", "Environmental Regulations", "SEMI Standards"],
+      "typical_legacy_systems": [
+        {"name": "Applied Materials", "type": "Equipment", "api_availability": "proprietary"},
+        {"name": "Camstar MES", "type": "Manufacturing", "api_availability": "limited"},
+        {"name": "Cadence/Synopsys", "type": "EDA", "api_availability": "limited"},
+        {"name": "Custom yield databases", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "cannabis": {
+      "display_name": "Cannabis",
+      "aliases": ["cannabis", "marijuana", "dispensary", "cultivation", "cannabis operator"],
+      "primary_pain_points": [
+        "Regulatory compliance documentation",
+        "Seed-to-sale tracking knowledge",
+        "Testing and quality documentation",
+        "Multi-state compliance variance",
+        "Budtender product knowledge"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Compliance Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 25,
+          "target_improvement": "55%"
+        },
+        {
+          "metric": "Product Knowledge Lookup",
+          "unit": "minutes",
+          "typical_baseline": 8,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "Audit Preparation Time",
+          "unit": "days",
+          "typical_baseline": 5,
+          "target_improvement": "40%"
+        }
+      ],
+      "compliance_frameworks": ["State Cannabis Regulations", "METRC/BioTrack", "Banking Compliance", "Local Licensing Requirements"],
+      "typical_legacy_systems": [
+        {"name": "METRC", "type": "Track and Trace", "api_availability": "rest_api"},
+        {"name": "Flowhub", "type": "POS", "api_availability": "rest_api"},
+        {"name": "Dutchie", "type": "E-commerce", "api_availability": "rest_api"},
+        {"name": "Custom cultivation systems", "type": "custom_application", "api_availability": "limited"}
+      ]
+    },
+
+    "veterinary": {
+      "display_name": "Veterinary",
+      "aliases": ["veterinary", "animal health", "vet clinic", "animal hospital"],
+      "primary_pain_points": [
+        "Patient record fragmentation",
+        "Protocol and treatment documentation",
+        "Inventory management knowledge",
+        "Client communication knowledge",
+        "Multi-location knowledge sharing"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Treatment Protocol Lookup",
+          "unit": "minutes",
+          "typical_baseline": 8,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "Client Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 10,
+          "target_improvement": "50%"
+        },
+        {
+          "metric": "New Staff Training Time",
+          "unit": "weeks",
+          "typical_baseline": 4,
+          "target_improvement": "35%"
+        }
+      ],
+      "compliance_frameworks": ["State Veterinary Board", "DEA Controlled Substances", "OSHA", "AAHA Standards"],
+      "typical_legacy_systems": [
+        {"name": "Cornerstone", "type": "Practice Management", "api_availability": "limited"},
+        {"name": "Avimark", "type": "Practice Management", "api_availability": "limited"},
+        {"name": "IDEXX", "type": "Diagnostics", "api_availability": "rest_api"},
+        {"name": "Custom patient databases", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "fitness_wellness": {
+      "display_name": "Fitness & Wellness",
+      "aliases": ["fitness", "gym", "wellness", "health club", "studio"],
+      "primary_pain_points": [
+        "Member services knowledge",
+        "Training program documentation",
+        "Multi-location procedure consistency",
+        "Staff certification tracking",
+        "Equipment maintenance knowledge"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Member Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 8,
+          "target_improvement": "55%"
+        },
+        {
+          "metric": "Training Program Lookup",
+          "unit": "minutes",
+          "typical_baseline": 10,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "New Trainer Onboarding",
+          "unit": "days",
+          "typical_baseline": 14,
+          "target_improvement": "40%"
+        }
+      ],
+      "compliance_frameworks": ["ADA", "Health Club Contracts", "Liability Requirements", "Trainer Certifications"],
+      "typical_legacy_systems": [
+        {"name": "Mindbody", "type": "Management", "api_availability": "rest_api"},
+        {"name": "Club OS", "type": "CRM", "api_availability": "rest_api"},
+        {"name": "ABC Fitness", "type": "Management", "api_availability": "rest_api"},
+        {"name": "Custom scheduling systems", "type": "legacy_database", "api_availability": "limited"}
+      ]
+    },
+
+    "architecture_engineering": {
+      "display_name": "Architecture & Engineering",
+      "aliases": ["architecture", "engineering firm", "AEC", "design firm", "civil engineering"],
+      "primary_pain_points": [
+        "Project documentation access",
+        "CAD/BIM file management",
+        "Code and standard reference",
+        "Cross-project knowledge reuse",
+        "Client communication documentation"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Drawing Retrieval Time",
+          "unit": "minutes",
+          "typical_baseline": 15,
+          "target_improvement": "65%"
+        },
+        {
+          "metric": "Code Reference Lookup",
+          "unit": "minutes",
+          "typical_baseline": 12,
+          "target_improvement": "55%"
+        },
+        {
+          "metric": "Project Similarity Search",
+          "unit": "minutes",
+          "typical_baseline": 30,
+          "target_improvement": "70%"
+        }
+      ],
+      "compliance_frameworks": ["Building Codes", "Professional Engineering Standards", "AIA Standards", "OSHA", "Environmental Regulations"],
+      "typical_legacy_systems": [
+        {"name": "Autodesk", "type": "CAD/BIM", "api_availability": "rest_api"},
+        {"name": "Bentley", "type": "Engineering", "api_availability": "rest_api"},
+        {"name": "Deltek", "type": "Project Management", "api_availability": "rest_api"},
+        {"name": "Custom project databases", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "event_management": {
+      "display_name": "Event Management",
+      "aliases": ["events", "event planning", "conferences", "trade shows", "event production"],
+      "primary_pain_points": [
+        "Vendor and supplier knowledge",
+        "Event playbook documentation",
+        "Multi-event coordination",
+        "Attendee management knowledge",
+        "Post-event documentation"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Vendor Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 15,
+          "target_improvement": "55%"
+        },
+        {
+          "metric": "Playbook Retrieval Time",
+          "unit": "minutes",
+          "typical_baseline": 12,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "New Planner Onboarding",
+          "unit": "weeks",
+          "typical_baseline": 6,
+          "target_improvement": "35%"
+        }
+      ],
+      "compliance_frameworks": ["ADA Event Requirements", "Health & Safety Codes", "Licensing Requirements", "Insurance Requirements"],
+      "typical_legacy_systems": [
+        {"name": "Cvent", "type": "Event Management", "api_availability": "rest_api"},
+        {"name": "Bizzabo", "type": "Event Platform", "api_availability": "rest_api"},
+        {"name": "Salesforce", "type": "CRM", "api_availability": "rest_api"},
+        {"name": "Custom event databases", "type": "custom_application", "api_availability": "limited"}
+      ]
+    },
+
+    "dental": {
+      "display_name": "Dental",
+      "aliases": ["dental", "dentistry", "dental practice", "orthodontics", "DSO"],
+      "primary_pain_points": [
+        "Treatment protocol access",
+        "Insurance and billing knowledge",
+        "Multi-location procedure consistency",
+        "Patient communication documentation",
+        "Compliance documentation"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Treatment Protocol Lookup",
+          "unit": "minutes",
+          "typical_baseline": 6,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "Insurance Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 12,
+          "target_improvement": "50%"
+        },
+        {
+          "metric": "New Hygienist Training",
+          "unit": "weeks",
+          "typical_baseline": 3,
+          "target_improvement": "35%"
+        }
+      ],
+      "compliance_frameworks": ["HIPAA", "OSHA Bloodborne Pathogens", "State Dental Board", "Radiation Safety"],
+      "typical_legacy_systems": [
+        {"name": "Dentrix", "type": "Practice Management", "api_availability": "limited"},
+        {"name": "Eaglesoft", "type": "Practice Management", "api_availability": "limited"},
+        {"name": "Open Dental", "type": "Practice Management", "api_availability": "rest_api"},
+        {"name": "Custom imaging systems", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "venture_capital": {
+      "display_name": "Venture Capital",
+      "aliases": ["VC", "venture capital", "growth equity", "startup investing"],
+      "primary_pain_points": [
+        "Deal flow documentation",
+        "Portfolio company knowledge",
+        "Due diligence documentation",
+        "Market research access",
+        "LP reporting documentation"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Deal Memo Retrieval",
+          "unit": "minutes",
+          "typical_baseline": 15,
+          "target_improvement": "65%"
+        },
+        {
+          "metric": "Due Diligence Research",
+          "unit": "hours",
+          "typical_baseline": 6,
+          "target_improvement": "40%"
+        },
+        {
+          "metric": "Portfolio Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 20,
+          "target_improvement": "55%"
+        }
+      ],
+      "compliance_frameworks": ["SEC Regulations", "Investment Adviser Act", "ILPA Guidelines", "Anti-Money Laundering"],
+      "typical_legacy_systems": [
+        {"name": "Affinity", "type": "CRM", "api_availability": "rest_api"},
+        {"name": "Carta", "type": "Cap Table", "api_availability": "rest_api"},
+        {"name": "PitchBook", "type": "Market Data", "api_availability": "rest_api"},
+        {"name": "Custom deal databases", "type": "custom_application", "api_availability": "limited"}
+      ]
+    },
+
+    "printing_publishing": {
+      "display_name": "Printing & Publishing",
+      "aliases": ["printing", "publishing", "media production", "print services"],
+      "primary_pain_points": [
+        "Job specification documentation",
+        "Production workflow knowledge",
+        "Client asset management",
+        "Equipment operation procedures",
+        "Quality control documentation"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Job Spec Retrieval",
+          "unit": "minutes",
+          "typical_baseline": 10,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "Production Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 12,
+          "target_improvement": "55%"
+        },
+        {
+          "metric": "New Operator Training",
+          "unit": "weeks",
+          "typical_baseline": 4,
+          "target_improvement": "35%"
+        }
+      ],
+      "compliance_frameworks": ["FSC Certification", "EPA VOC Regulations", "OSHA", "Copyright Law"],
+      "typical_legacy_systems": [
+        {"name": "EFI", "type": "MIS", "api_availability": "rest_api"},
+        {"name": "PrintVis", "type": "MIS", "api_availability": "rest_api"},
+        {"name": "Custom prepress systems", "type": "legacy_database", "api_availability": "limited"},
+        {"name": "Legacy job tracking", "type": "legacy_database", "api_availability": "sql_only"}
+      ]
+    },
+
+    "cybersecurity": {
+      "display_name": "Cybersecurity",
+      "aliases": ["cybersecurity", "infosec", "security services", "MSSP"],
+      "primary_pain_points": [
+        "Threat intelligence documentation",
+        "Incident response procedures",
+        "Client environment documentation",
+        "Security tool knowledge",
+        "Compliance framework mapping"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Threat Intel Retrieval",
+          "unit": "minutes",
+          "typical_baseline": 15,
+          "target_improvement": "65%"
+        },
+        {
+          "metric": "Incident Response Time",
+          "unit": "minutes",
+          "typical_baseline": 30,
+          "target_improvement": "40%"
+        },
+        {
+          "metric": "Analyst Onboarding Time",
+          "unit": "weeks",
+          "typical_baseline": 8,
+          "target_improvement": "35%"
+        }
+      ],
+      "compliance_frameworks": ["SOC 2", "ISO 27001", "NIST CSF", "PCI-DSS", "HIPAA Security Rule"],
+      "typical_legacy_systems": [
+        {"name": "Splunk", "type": "SIEM", "api_availability": "rest_api"},
+        {"name": "CrowdStrike", "type": "EDR", "api_availability": "rest_api"},
+        {"name": "ServiceNow", "type": "ITSM", "api_availability": "rest_api"},
+        {"name": "Custom threat databases", "type": "custom_application", "api_availability": "rest_api"}
+      ]
+    },
+
+    "franchise": {
+      "display_name": "Franchise",
+      "aliases": ["franchise", "franchisor", "franchise operations", "chain operations"],
+      "primary_pain_points": [
+        "Operations manual documentation",
+        "Brand standard enforcement",
+        "Franchisee training materials",
+        "Multi-unit performance documentation",
+        "Compliance and audit documentation"
+      ],
+      "success_metrics": [
+        {
+          "metric": "Operations Manual Lookup",
+          "unit": "minutes",
+          "typical_baseline": 12,
+          "target_improvement": "60%"
+        },
+        {
+          "metric": "Franchisee Query Resolution",
+          "unit": "minutes",
+          "typical_baseline": 18,
+          "target_improvement": "50%"
+        },
+        {
+          "metric": "New Franchisee Training",
+          "unit": "weeks",
+          "typical_baseline": 6,
+          "target_improvement": "30%"
+        }
+      ],
+      "compliance_frameworks": ["FTC Franchise Rule", "State Franchise Laws", "FDD Requirements", "Brand Standards"],
+      "typical_legacy_systems": [
+        {"name": "FranConnect", "type": "Franchise Management", "api_availability": "rest_api"},
+        {"name": "Naranga", "type": "Franchise Operations", "api_availability": "rest_api"},
+        {"name": "Custom POS systems", "type": "Point of Sale", "api_availability": "limited"},
+        {"name": "Legacy training systems", "type": "custom_application", "api_availability": "sql_only"}
+      ]
+    }
+  },
+
+  "industry_detection_patterns": {
+    "keyword_mapping": {
+      "patient|clinical|EHR|HIPAA|hospital": "healthcare",
+      "transaction|payment|AML|KYC|neobank": "fintech",
+      "litigation|matter|attorney|precedent|conflicts": "legal",
+      "SCADA|plant|production|assembly|OEM": "manufacturing",
+      "student|faculty|campus|accreditation|enrollment": "higher_education",
+      "grid|utility|FERC|NERC|outage": "energy_utilities",
+      "store|omnichannel|inventory|POS|retail": "retail",
+      "underwriting|claims|policy|actuarial|premium": "insurance",
+      "loan|deposit|branch|treasury|credit": "banking",
+      "FDA|clinical trial|drug|GMP|pharmacovigilance": "pharmaceutical",
+      "network|carrier|spectrum|5G|subscriber": "telecommunications",
+      "federal|agency|clearance|FISMA|FedRAMP": "government_federal",
+      "municipal|county|constituent|permit|public record": "government_state_local",
+      "defense|ITAR|classified|DoD|contractor": "defense_aerospace",
+      "vehicle|OEM|dealer|automotive|recall": "automotive",
+      "content|streaming|broadcast|rights|production": "media_entertainment",
+      "hotel|guest|property|hospitality|lodging": "hospitality",
+      "property|lease|REIT|tenant|CRE": "real_estate",
+      "shipment|freight|carrier|logistics|3PL": "logistics_transportation",
+      "farm|crop|agriculture|harvest|USDA": "agriculture",
+      "construction|contractor|site|building|subcontractor": "construction",
+      "food|beverage|recipe|HACCP|allergen": "food_beverage",
+      "mining|extraction|ore|safety|MSHA": "mining",
+      "nonprofit|donor|grant|foundation|charity": "nonprofit",
+      "consulting|engagement|advisory|utilization|methodology": "professional_services",
+      "SaaS|software|developer|API|engineering": "technology_software",
+      "biotech|lab|genomics|research|protocol": "biotech",
+      "medical device|510k|DHF|complaint|MDR": "medical_devices",
+      "game|studio|QA|live ops|asset": "gaming",
+      "portfolio|fund|hedge|LP|AUM": "investment_management",
+      "chemical|SDS|formulation|process safety|REACH": "chemicals",
+      "fashion|apparel|design|collection|textile": "fashion_apparel",
+      "HR|recruiting|candidate|benefits|payroll": "hr_services",
+      "K-12|school|district|curriculum|teacher": "k12_education",
+      "sports|team|venue|fan|season": "sports_entertainment",
+      "oil|gas|drilling|reservoir|pipeline": "oil_gas",
+      "cruise|vessel|maritime|port|IMO": "cruise_maritime",
+      "call center|agent|handle time|BPO|contact": "call_center",
+      "semiconductor|fab|wafer|yield|cleanroom": "semiconductor",
+      "cannabis|dispensary|cultivation|METRC|budtender": "cannabis",
+      "veterinary|animal|clinic|patient|treatment": "veterinary",
+      "fitness|gym|member|trainer|wellness": "fitness_wellness",
+      "architecture|engineering|CAD|BIM|civil": "architecture_engineering",
+      "event|conference|venue|attendee|trade show": "event_management",
+      "dental|dentist|hygienist|treatment|DSO": "dental",
+      "VC|venture|portfolio|deal|startup": "venture_capital",
+      "printing|publishing|prepress|print|job": "printing_publishing",
+      "cybersecurity|threat|SOC|incident|SIEM": "cybersecurity",
+      "franchise|franchisee|unit|brand standard|FDD": "franchise"
+    }
+  },
+
+  "cross_industry_themes": {
+    "regulatory_heavy": ["healthcare", "pharmaceutical", "banking", "insurance", "fintech", "energy_utilities", "government_federal", "defense_aerospace", "cannabis"],
+    "high_turnover": ["retail", "hospitality", "call_center", "food_beverage", "fitness_wellness"],
+    "knowledge_intensive": ["legal", "professional_services", "technology_software", "biotech", "investment_management", "venture_capital"],
+    "field_operations": ["energy_utilities", "telecommunications", "oil_gas", "construction", "logistics_transportation", "manufacturing"],
+    "multi_location": ["retail", "hospitality", "franchise", "dental", "fitness_wellness", "banking"]
+  }
+}

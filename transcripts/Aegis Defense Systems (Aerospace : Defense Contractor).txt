@@ -1,0 +1,45 @@
+Participants:
+
+Alex (Glean Solutions Consultant)
+
+General Vance (VP of Operations - Champion)
+
+Director Sarah (Chief Compliance Officer - Blocker)
+
+Marcus (CFO - Skeptic)
+
+Transcript:
+
+Alex: Good morning. We're here to discuss deploying Glean to help your engineering teams find technical schematics across your internal networks.
+
+General Vance: Exactly. My engineers are wasting hours looking for CAD drawings in "The Vault." That’s our secure, offline repository. We need Glean to index "The Vault" so they can ask questions like, "Show me the fuel pump schematics for the X-15 Prototype."
+
+Alex: Understood. So we need to connect to "The Vault." Is this repository connected to your standard corporate network?
+
+Director Sarah (Compliance): Absolutely not. "The Vault" is air-gapped. It contains ITAR-restricted military blueprints and Classified specs. It physically cannot touch the public internet.
+
+Alex: Okay. Glean is typically a SaaS solution hosted in the cloud. We index metadata to our cloud vector engine.
+
+Director Sarah: Stop. Hard stop right there. If you take one byte of ITAR data and send it to a public cloud vector engine, that is a federal violation. We would lose our defense license and face prison time. I am flagging this immediately. Unless you can deploy this 100% offline—on bare metal hardware inside our SCIF—I cannot approve this. This is a critical compliance blocker.
+
+General Vance: Sarah, we need the search. The engineers are drowning.
+
+Director Sarah: I understand, General, but I cannot sign off on a cloud deployment for ITAR data. It’s non-negotiable.
+
+Alex: We do have an "Air-Gapped / On-Premise" deployment option for these cases, but it requires custom hardware configuration and a dedicated on-site deployment team.
+
+Marcus (Finance): That sounds expensive. What are we talking about?
+
+Alex: Typically, an air-gapped deployment starts at $150,000 for the implementation and hardware setup, versus the standard $20,000 setup fee.
+
+Marcus: $150k? No. We have a strict government grant for this efficiency program capped at $50,000 total. We cannot triple the budget. If the standard license doesn't cover it, we can't do it.
+
+Alex: The standard license relies on our multi-tenant cloud infrastructure, which Sarah just blocked.
+
+Marcus: Then we are at an impasse. I'm rejecting the budget request for $150k. We don't have the margin.
+
+Director Sarah: And I'm blocking the cloud option.
+
+General Vance: There has to be a middle ground. Can we sanitize the data?
+
+Director Sarah: Not for the index. The metadata itself is classified. I'm marking this assessment as "Blocked" until we get a waiver or a new architecture.

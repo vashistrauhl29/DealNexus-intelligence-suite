@@ -1,0 +1,68 @@
+Rahul: Thanks for making time today. The intent is to understand where people lose time looking for information, what constraints you need respected, and what an outcomes based success definition would look like. Jack, what prompted the conversation now?
+Jack: We are not dealing with a major breakdown. Production is running. But as volumes have increased, the amount of coordination has grown. There are moments where the right document or the right decision history is not immediately in front of the team.
+Rahul: When you say the right document, what types show up most often?
+Jack: Standard operating procedures, batch record references, deviation histories, change control notes, and sometimes vendor certificates. Different teams store them in different places.
+Rahul: Which systems are involved today?
+Jack: SAP for a lot of planning and materials, SharePoint for quality docs and work instructions, email for approvals and exceptions, and then a legacy set of PDFs from before we standardized. There is also a legacy quality database that holds deviation and investigation records.
+Amy: And that legacy database is not just a convenience tool. It is part of our regulated record set, so we treat it carefully.
+Rahul: Understood. Before we get into the legacy system, I want to stay on the surface need. Who is most impacted by the distribution across SAP, SharePoint, email, and PDFs?
+Jack: Shift supervisors and manufacturing engineers. Also QA reviewers during batch release. If you ask them, they will say it is manageable, but it creates small pauses. Those pauses stack up.
+Rahul: Small pauses are usually expensive because nobody labels them as a problem. Can you walk me through a typical scenario where a pause happens?
+Jack: A line lead sees a process drift, they want to check whether a similar deviation happened last quarter, and what corrective action was accepted. They can search SharePoint, but that may only have final reports. The interim notes might live in email. The structured deviation details might be in the legacy quality system. So the person either asks QA, or they open a ticket.
+Rahul: You mentioned a ticket. Is that what you call the human wall, the point where a person cannot self serve and must route a request to a specialized team?
+Jack: Yes. We have a quality systems team that manages access and extracts reports. They are good, but they have a queue. People plan around it.
+Amy: The human wall is not accidental. It exists because regulated systems require controlled access, and because the legacy system does not support modern fine grained permissions.
+Rahul: That is helpful context. Amy, when you think about information access here, what is the primary concern, unauthorized access, data integrity, or auditability?
+Amy: All 3. We operate under GxP controls. We need to ensure the right people see the right records, changes are traceable, and the record of who accessed what is defensible. If we cannot prove that, we invite regulatory scrutiny.
+Rahul: Jack, what does the business feel as a result of these pauses and the human wall?
+Jack: It shows up as slower batch release, more back and forth, and more expediting. I would not call it a crisis, but it is persistent friction.
+Rahul: Can you quantify slower batch release in a practical way?
+Jack: Our target is same day release after final QC results. In reality, some batches sit for another 1 to 2 days while QA confirms deviation closures and cross checks documents.
+Rahul: What is QA doing during that extra time?
+Jack: Verifying that the latest SOP version was used, confirming the corrective action documentation is complete, locating prior precedent, and sometimes reconciling supplier documentation. None of that is wrong, it is just time consuming.
+Amy: And it is time consuming because it is careful work. If QA releases without proper verification, we risk a deviation in our quality system and potential recall exposure.
+Rahul: Completely. The question is whether careful work can be supported by faster access to the same facts, without changing controls. Let us talk about the legacy system. What is it called?
+Jack: QTrack.
+Rahul: What does QTrack contain?
+Amy: Deviation records, investigation narratives, CAPA links, some training references, and electronic signatures tied to responsible individuals. It also includes operator identifiers and occasionally personally identifying details when investigations involve human factors.
+Rahul: Does QTrack have a modern integration path, like a REST API?
+Jack: No. It is SQL based and old. It was built before the current ecosystem.
+Rahul: That is the trap. If there is no API layer, teams often end up exporting data or building custom extraction jobs, which can create shadow copies. Amy, is that where your concern goes first?
+Amy: Yes. Shadow copies and uncontrolled indexing. If you take regulated records and replicate them into a new system without equivalent controls, you create a compliance gap. In our world, that is a warning letter type of risk. Not identical to healthcare, but similar in terms of audit exposure and reputational damage.
+Rahul: Understood. Jack, what is your ideal end state for QTrack?
+Jack: I want supervisors, engineers, and planners to search the history. If a batch is held due to a recurring deviation, the team should instantly see whether a similar event happened before and what was accepted. Right now, it is too dependent on who knows whom.
+Amy: My position is that broad access to QTrack content is not acceptable as stated. It contains regulated records and sensitive details. QTrack itself does not have granular controls, and it was not designed for broad discovery.
+Rahul: Let me restate the conflict to ensure I have it right. Operations wants QTrack broadly searchable to reduce batch release delays and reduce repeated investigations. Compliance is opposed because QTrack contains regulated and sensitive information, lacks modern access controls, and there is risk in indexing or replicating it without provable controls. Correct?
+Jack: Yes.
+Amy: Yes.
+Rahul: Let me ask a precision question, Jack. When you say broadly searchable, do you mean every field, every narrative, and every attachment, or do you mean the ability to discover relevant precedent and route to the right owner quickly?
+Jack: The second. I do not need everyone reading every narrative. I need people to know what exists, what was decided, and who can act. If we can reduce the time to find precedent, the rest moves faster.
+Rahul: Amy, would you consider an approach where we do not index sensitive fields, we do not copy attachments, and we only surface derived signals and metadata, such as deviation category, product family, root cause code, status, and owning team, with strict role based access?
+Amy: That is closer, but we have to be careful. Even metadata can be sensitive depending on context. Also, derived signals still need a chain of custody, and we need to ensure they are not treated as the system of record.
+Rahul: That is fair. A common pattern is a discovery layer that points to the authoritative record, not replacing it. The discovery layer answers, does something relevant exist, where is it, and who owns it. Viewing the full record still requires system of record permission and audit trails.
+Jack: That would still help. Today, people spend time just confirming whether something exists.
+Rahul: Let us connect this to outcomes. You mentioned batch release sitting 1 to 2 days in some cases. If we remove search and verification latency, what would be a reasonable improvement target?
+Jack: If we can eliminate even 1 day on the held batches, it would reduce expediting and improve customer fill rates.
+Rahul: Amy, what would success look like for you?
+Amy: No expansion of access beyond least privilege, clear audit logs, no uncontrolled replication of regulated content, and a documented validation approach. Also, whatever we do must respect electronic record and electronic signature expectations.
+Rahul: Understood. Another question on the human wall. How does the ticketing process work today for QTrack requests?
+Jack: A supervisor submits a ticket to quality systems. They run a report or export a record. Sometimes it is same day, sometimes it is 2 days. It depends on queue and complexity.
+Rahul: Does ticketing increase during certain periods, like end of quarter, audit prep, or peak production?
+Jack: Yes. Also during deviation spikes, which is when we most need speed.
+Amy: And spikes are when shortcuts appear. People start forwarding extracts in email threads or saving them in shared folders. That is how incidents happen, not maliciously, but through convenience.
+Rahul: That aligns with what you said earlier. The risk is not only access, it is behavior induced by friction. If people cannot get answers quickly, they create informal caches. That becomes hard to govern.
+Jack: Right.
+Rahul: Here is a practical approach that usually aligns these goals. Phase 1 focuses on non regulated content fragmentation: unify discovery across SharePoint SOPs, approved work instructions, SAP references, and the legacy PDF repository, while honoring existing permissions. That alone can reduce time spent confirming the latest SOP and locating batch attachments. Phase 2 addresses QTrack carefully: define a narrow data contract for what can be indexed, exclude sensitive fields, restrict by role, and ensure every click through to full details happens in QTrack with QTrack permissions. For the no API constraint, we design a controlled extraction job managed by your quality systems team, with encryption, logging, and a validation package.
+Amy: I would want to review the extraction design early. The failure mode is building something that looks convenient but is not defensible in an audit.
+Rahul: Agreed. We would involve compliance in the design, not at the end. Jack, would phase 1 deliver noticeable value while phase 2 is being designed?
+Jack: Yes, if it reduces time spent finding the right SOP, the right form, and the right reference. That work happens every day.
+Rahul: Good. One more subtle point. When teams cannot find precedent quickly, they often over escalate. They pull more people into a decision, which increases cycle time. Do you see that?
+Jack: Yes. People loop in senior QA or engineering leads just to confirm what happened last time. It is cautious, but it is slow.
+Amy: And the caution is appropriate, but I agree the escalation load is high.
+Rahul: Then an outcome metric can be reduction in escalations for precedent lookup, reduction in ticket volume to quality systems, and reduction in batch release waiting time attributable to document verification. We can pair that with compliance metrics: audit log completeness, access exception rates, and evidence that sensitive fields are excluded from indexing.
+Jack: That sounds actionable.
+Amy: It is actionable if the governance is explicit and documented.
+Rahul: Next steps. I propose a short diagnostic with 3 groups. First, shift supervisors and engineers, to map search paths and where they switch systems. Second, QA batch release reviewers, to quantify what they are verifying and where time is spent. Third, the quality systems team, to assess QTrack structure, extraction feasibility, and control requirements. The output is a phased outcomes plan with a technical design that avoids shadow copies, maintains least privilege, and reduces the human wall dependency where it is safe to do so.
+Jack: That works for me.
+Amy: I will participate, and I want my team involved in the data classification and validation expectations from the start.
+Rahul: Understood. I will send a summary and a proposed agenda, including the decisions we need to make about scope, role groups, and what we will and will not index from QTrack.

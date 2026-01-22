@@ -1,0 +1,55 @@
+Participants:
+
+Alex (Glean Solutions Consultant)
+
+Sarah (CTO of Aetheris - The Champion)
+
+Marcus (CISO / Chief Security Officer - The Blocker)
+
+Elena (VP of Product - The User Advocate)
+
+David (Finance Director - The Budget Keeper)
+
+Transcript:
+
+Alex: Thanks for getting the key stakeholders together. My understanding is that since the acquisition of QuantFlow, you’re seeing significant productivity drags because teams can’t find information across the two organizations.
+
+Sarah (CTO): "Drag" is putting it lightly. It’s a wall. We have 5,000 employees at Aetheris using Microsoft 365 and SharePoint. The 200 engineers at QuantFlow live in Slack, Google Drive, and Notion. If my Aetheris sales team searches for "Project Nebula" on our SharePoint, they get zero results because all the specs are in QuantFlow’s Notion. We’re missing cross-sell opportunities daily.
+
+Elena (Product): It’s worse for the product team. We’re supposed to integrate their AI engine into our banking core by Q3. But my developers spend 20% of their week just pinging people on Slack asking, "Where is the API documentation?" It’s killing our velocity. We need a unified search layer that sits on top of everything.
+
+Alex: This is exactly what Glean connects. Let’s map the data sources. You mentioned M365, SharePoint, Google Drive, Notion, and Slack. Any others?
+
+Sarah (CTO): Yes, the holy grail. All of QuantFlow’s actual source code and issue tracking is in a self-hosted instance of Jira Server and GitHub Enterprise. We need those indexed so our support reps can search ticket history.
+
+Alex: Okay, standard connectors for GitHub and Jira. That’s straightforward.
+
+Marcus (CISO): Hold on. I need to clarify the data sensitivity here. QuantFlow’s Jira instance contains raw customer financial logs pasted into tickets. That is PII (Personally Identifiable Information) and strictly regulated banking data. We are SOC2 and GLBA compliant. I cannot have that data indexed by a multi-tenant cloud search engine. If you index that Jira instance, where does the index live?
+
+Alex: By default, the index is hosted in our secure cloud environment.
+
+Marcus (CISO): Then that’s a hard no. We cannot ship banking transaction logs to your public cloud. Unless you can offer a "Bring Your Own Key" (BYOK) encryption model or a dedicated VPC isolated from other customers, I’m blocking this. We need a guarantee that no data leaves our control boundary.
+
+Alex: We can do a dedicated VPC deployment, but that moves us from the "Standard" tier to the "Enterprise Custom" tier.
+
+Elena (Product): There’s one more wrinkle. The "QuantFlow Core" database. It’s an ancient PostgreSQL database sitting on a physical server in their old office. It holds 10 years of historical algorithmic models. It has no API. It’s just raw SQL tables. We need that indexed, or the merger is pointless.
+
+Alex: A physical SQL server with no API? We’d need to build a custom connector—essentially a scraper that runs on a local agent, queries the SQL tables directly, sanitizes the data, and pushes it to the index.
+
+Sarah (CTO): How long does that take?
+
+Alex: For a custom SQL scraper like that... we’re looking at probably 300 engineering hours to build, test, and secure it, especially given Marcus's security requirements.
+
+David (Finance): Let’s talk numbers. I approved a budget of $80,000 for a SaaS search tool. Standard pricing.
+
+Alex: With the dedicated VPC requirement from Marcus and the custom SQL connector for the legacy database, the implementation cost alone—excluding the license—would be around $120,000. Plus the annual Enterprise license.
+
+David (Finance): $120k just for implementation? That is 50% over my total cap for the year. I can’t sign that. We have a freeze on capital expenditure. You need to fit this into the $80k operating budget, or we wait until next fiscal year.
+
+Elena (Product): We can’t wait! If we miss the Q3 integration, we lose the $5M expansion revenue we promised the board.
+
+Marcus (CISO): I don’t care about the revenue if we get fined by the SEC for a data breach. If it’s not in a private VPC, I’m vetoing it.
+
+Sarah (CTO): So we have a technical need for a custom build, a security requirement that forces a premium deployment, and a finance director who just capped us at half the required cost. Alex, what can we do?
+
+Alex: Let me take this back to our team. We might be able to structure the custom build costs differently or look at a phased rollout.

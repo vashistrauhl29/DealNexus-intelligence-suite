@@ -1,0 +1,31 @@
+Participants:
+
+Alex (Glean Consultant)
+
+Dr. Sorel (Client CTO)
+
+Marcus (Client Legal Counsel)
+
+Sarah (Client VP of Finance)
+
+Transcript:
+
+Alex: Thanks for joining. The goal today is to scope out the deployment of the Glean search index across your new merged entity. Let's start with the technical environment.
+
+Dr. Sorel: Right. So, the core issue is our legacy patient database, "MedArchive." It’s an on-premise mainframe system built in the 90s. It has no API. To search it, you’re going to need to build a custom scraper that logs in via a terminal emulator. It's not a standard connector.
+
+Alex: Understood. A custom build for a mainframe. And what kind of data is in there?
+
+Dr. Sorel: Everything. Patient histories, social security numbers, diagnoses.
+
+Marcus (Legal): Which brings me to my hard requirement. None of that data can leave our private VPC. If your search index requires sending snippets of patient data to a public cloud LLM for summarization, I cannot approve this. We are strictly HIPAA regulated. Unless you can guarantee zero data retention and a BAA signed today, this is a no-go. I'm marking this as high-risk until I see a security architecture diagram.
+
+Alex: We can discuss the architecture. Sarah, how does this fit the budget?
+
+Sarah (Finance): Well, looking at the complexity Dr. Sorel just mentioned with the custom mainframe build... we have a hard cap. We budgeted for a standard SaaS integration. If this custom work pushes the implementation fee over $50k, we can't sign. We need the standard license cost to cover the custom development.
+
+Dr. Sorel: It has to happen, Sarah. The doctors won't use the system if they can't find the old patient records.
+
+Marcus: And they won't use it at all if we get sued for a HIPAA breach. I'm blocking approval until the data residency is resolved.
+
+Alex: Okay, I hear the conflict. Let's see what we can structure.

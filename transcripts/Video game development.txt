@@ -1,0 +1,79 @@
+Rahul, Glean AI Outcomes Manager
+Maya, Nebula Interactive Studios SVP Studio Operations
+Ethan, Nebula Interactive Studios Chief Legal and Compliance Officer
+Jordan, Nebula Interactive Studios Director of Creative Asset Management
+Rahul: Thanks for making time today. The intent is to understand how your teams find the information they need to ship content safely and on schedule, where small delays appear, and what constraints we need to respect. Maya, what prompted this conversation?
+Maya: We are in a steady state overall. But the number of releases has increased. We ship patches, seasonal content, and marketing drops more frequently. That means more approvals and more dependencies. The team is spending more time proving things than doing the work.
+Rahul: Proving things as in approvals and evidence trails?
+Maya: Yes. Rights, usage approvals, and confirmation that we are covered for specific regions and channels. It is not a crisis. It is just friction that becomes visible when we have a hard date.
+Rahul: Jordan, where does that friction show up for your team?
+Jordan: Asset discovery and rights clarity. People can usually find the file itself. The problem is confirming the terms around it. A track may be approved for in game use but not for trailers. An image may be cleared for paid social in 1 region but not worldwide. Those details live in different places.
+Rahul: Where are those details stored today?
+Jordan: The file is usually in Drive. The request and discussion are usually in Slack or Jira. The approval might be in an email thread. The contract terms are in a legacy database, plus PDFs on a file share. Sometimes the only record is a screenshot in a ticket.
+Ethan: To be fair, the contract record exists. It is just not packaged the way a creative team wants to consume it.
+Rahul: Understood. Ethan, what do you consider the system of record for rights and contracts?
+Ethan: RightsLedger, plus the executed agreement PDFs. RightsLedger is where we store structured fields like territory, media type, term dates, and payment schedules. The PDF is the authoritative artifact.
+Rahul: Does RightsLedger integrate easily with other tools?
+Jordan: No. It is old. SQL based. No REST API. If someone wants information, they usually ask Legal Ops or my team, and we ask Legal Ops.
+Rahul: That sounds like a human wall. A small group that becomes the gate for high value information.
+Maya: It is not meant to be a wall. It is a control and a practical limitation. But yes, it is a dependency.
+Rahul: How does that dependency show up during a launch window?
+Maya: You see it in late stage checklists. A trailer is ready, then someone asks whether the background track is cleared for paid placements. Or a character skin uses a branded pattern and the question is whether it is allowed in a region. People stop, ask around, and we either delay the drop or swap assets.
+Rahul: Ethan, do you have an estimate for how often a launch item gets held due to rights confirmation?
+Ethan: I do not want to imply we are constantly blocked. Many items are routine. But we do have recurring questions, especially with older contracts, co developed content, and anything involving external talent.
+Jordan: The volume is not the problem. The timing is the problem. The request shows up when the team is ready to ship, not when the contract was signed.
+Rahul: That is common. The information is created at intake, but the question is asked at the edge of release. Maya, what is the surface symptom you hear from teams?
+Maya: They say they cannot find the latest answer. They know it exists somewhere. They just cannot locate it quickly, or they are not confident they have the most current approval.
+Rahul: What systems do they search first?
+Jordan: Jira, because that is where work lives. Then Drive for the asset. Then Slack for the discussion. If they still cannot confirm, they ask in a channel and tag someone. Then it becomes a ticket to Legal Ops.
+Rahul: How long does the ticket path take?
+Ethan: It varies. Sometimes same day. Sometimes 2 to 3 days if it requires pulling an older agreement, interpreting a clause, or checking an exception.
+Maya: Which is where we lose momentum. The team will say it is fine, they will work on something else, but the calendar does not pause.
+Rahul: If you had to translate that into an operational cost, what would you point to?
+Maya: Release slippage risk. Overtime. And the opportunity cost of marketing timing. But we do not label it as a single line item.
+Rahul: Jordan, is there a manual assembly process for clearance, similar to building a release packet?
+Jordan: Yes. We do a rights clearance pass. For a big drop, we assemble proof for music, VO, likeness rights, stock assets, and brand terms. It is a checklist, but the evidence collection is manual.
+Rahul: What does manual mean in practice?
+Jordan: People open 6 tabs, search email, search Slack, find the contract PDF, then summarize what it says into a comment. Another person reviews. Sometimes Legal Ops confirms. It is careful, but it is slow.
+Rahul: Ethan, does Legal see this as necessary caution, or is it also a sign that the information is not accessible in the right way?
+Ethan: Both. Caution is non negotiable. But if the only way to be safe is to ask a few people who know where things are, then we are relying on individuals, not a system. That is not ideal either.
+Rahul: Let us talk about the trap system. RightsLedger holds sensitive data. What exactly is sensitive about it beyond contract terms?
+Ethan: Vendor payout information, royalty rates, sometimes bank details, sometimes personal contact information for talent and agencies. Also, confidentiality obligations. If our internal teams broadly access rates, we increase leakage risk.
+Rahul: Does RightsLedger have granular access controls?
+Ethan: Not at the level we would want today. It has basic roles, but not fine grained controls per field or per contract type.
+Rahul: So the conflict is that Operations wants RightsLedger searchable so teams can self serve and move faster. Legal and compliance is concerned that indexing it broadly could expose confidential terms and personal information, and the system itself cannot enforce least privilege. Is that accurate?
+Maya: Yes. I want to remove waiting. If a producer can see the historical risk profile for an asset, they can make decisions earlier.
+Ethan: And I want to avoid a breach scenario. In our world, the incident is not medical. It is a leak of personal payout data or confidential deal terms, followed by partner disputes, legal claims, and audit findings tied to our controls.
+Rahul: Understood. Jordan, what do teams actually need to see to make the right decision without exposing sensitive fields?
+Jordan: They need allowable use by channel, territory, and timeframe. They need attribution requirements. They need red flags like prohibited use in paid media, or restrictions on modifications. They do not need bank details or full rate cards.
+Rahul: Ethan, would you be open to a model where only non sensitive rights attributes are indexed, and sensitive financial fields are excluded by design?
+Ethan: Possibly, but I have concerns. Even rights attributes can be confidential depending on the partner. Also, the indexing process itself can create a copy. If we create a copy, we need controls and auditability equivalent to our current approach.
+Rahul: Makes sense. Maya, when you ask for RightsLedger to be indexed, are you asking for full text search across contract PDFs, or structured visibility of rights fields, or both?
+Maya: Structured visibility first. Full text can be helpful, but it also invites misinterpretation if someone reads a clause without context. What we need is a reliable summary of what is allowed, with a link to the source of truth.
+Rahul: That suggests a design goal: reduce uncertainty, not just increase access. Jordan, what percentage of clearance questions are repeats, meaning the same partner or the same content type?
+Jordan: A lot. Music and voice are recurring. Brand collaborations repeat patterns too. The team asks similar questions each season.
+Rahul: If repeats are common, then faster retrieval of past decisions could reduce churn. Ethan, do you have a standardized interpretation memo or playbook for common clauses?
+Ethan: We have templates, but exceptions are everywhere. That is why people ask.
+Rahul: Understood. Let us surface the subtle pain. Maya, you mentioned overtime and timing. Is it fair to say that teams spend a measurable amount of time each week assembling clearance packets rather than executing creative work?
+Maya: People would not phrase it that way, but yes, producers and coordinators spend a meaningful portion of their week collecting evidence. It is the tax of shipping safely.
+Jordan: My team spends a lot of time answering questions we have answered before.
+Rahul: If we framed the outcome as reducing time to confirm usage rights, reducing ticket volume to Legal Ops, and reducing late stage asset swaps, would that be relevant?
+Maya: Yes.
+Ethan: It is relevant if it does not broaden exposure. Also, I want a defensible audit story. If a partner asks who accessed a contract and why, we need logs.
+Rahul: Let us discuss the human wall. Today, the wall is Legal Ops. If we reduce dependence on Legal Ops, what happens to risk?
+Ethan: Risk can go up if people act on partial information. Risk can go down if we reduce informal sharing like screenshots and forwarded PDFs, because they could self serve in a controlled way.
+Rahul: That is an important point. Friction often drives uncontrolled workarounds. Jordan, do you see people storing private copies of contracts to move faster?
+Jordan: I do not want to accuse anyone, but people keep local notes and folders. They are trying to avoid blocking a launch.
+Ethan: That is exactly what we want to prevent.
+Rahul: Then the design needs to reduce workarounds by making the safe path faster than the unsafe path. Here is a potential phased approach, and you can react. Phase 1: unify discovery across Jira, Slack, Drive, and email approvals so teams can find the discussion and the approved asset packages quickly, honoring existing permissions. Phase 2: for RightsLedger, index a constrained rights view. Exclude financial fields, exclude personal identifiers, and restrict access by role groups. Provide click through to the authoritative PDF in its controlled repository. Phase 3: implement a controlled request workflow for sensitive details when required, with approvals and audit logging, replacing the open ended ticket back and forth.
+Maya: That sounds reasonable. I care that Phase 1 creates visible speed without waiting for the hard part.
+Ethan: I care that Phase 2 does not quietly become a parallel system. We need clear boundaries about what is stored, how long, and who can see it.
+Rahul: Agreed. For the no REST API constraint, we would need a controlled extraction from SQL, likely managed by your team, not an ad hoc connector. That extraction would only pull the approved fields for indexing and would log access. We would document it as part of your controls.
+Ethan: That is the right framing. The details matter.
+Jordan: One more nuance. People also struggle with naming. An asset can have 3 names across systems. So even if rights are indexed, search must map aliases.
+Rahul: Good point. We can treat aliases as a first class field, connected to Jira IDs, asset IDs, and marketing names. That reduces false negatives.
+Maya: What do you need from us to validate this?
+Rahul: 3 workstreams. First, a workflow walkthrough with producers, marketing ops, and your asset team to map clearance steps and where they switch tools. Second, a data classification session with Legal to define what fields are indexable and what are excluded. Third, a technical assessment of RightsLedger structure, the PDF repository, and your permission model across Drive and Jira. The output would be an outcomes plan with measurable targets, plus a control and audit design that Ethan can defend.
+Ethan: I will participate, and I want my team involved from day 1.
+Maya: And I want the metrics. Ticket volume, time to clearance, and reduction in late stage swaps.
+Rahul: Understood. I will send a summary with proposed participants, the exact questions we will answer, and the decisions we need on scope and access groups before any RightsLedger data is touched.

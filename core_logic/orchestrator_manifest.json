@@ -1,0 +1,233 @@
+{
+  "manifest_version": "1.0",
+  "system_name": "Customer Discovery Orchestrator",
+  "description": "State machine for multi-agent customer discovery assessment workflow",
+
+  "trigger": {
+    "type": "file_watch",
+    "path": "/transcripts",
+    "event": "new_file",
+    "file_types": [".txt", ".md", ".json"]
+  },
+
+  "state_transitions": {
+    "step_a": {
+      "name": "Intent Extraction",
+      "agent": "outcomes_strategist",
+      "action": "extract_intent",
+      "input": "trigger.new_file",
+      "output": "intent_analysis.json",
+      "on_complete": "step_b"
+    },
+
+    "step_b": {
+      "name": "Parallel Review",
+      "type": "parallel",
+      "agents": [
+        {
+          "agent": "technical_pm",
+          "action": "technical_feasibility_review",
+          "input": "step_a.output",
+          "output": "technical_review.json"
+        },
+        {
+          "agent": "legal_counsel",
+          "action": "compliance_review",
+          "input": "step_a.output",
+          "output": "legal_review.json"
+        }
+      ],
+      "await_all": true,
+      "on_complete": "step_c"
+    },
+
+    "step_c": {
+      "name": "Custom Build Resolution Loop",
+      "type": "conditional_loop",
+      "condition": "technical_pm.flags.custom_build === true",
+      "max_turns": 3,
+      "loop_logic": {
+        "initiator": "technical_pm",
+        "target": "finance_director",
+        "action": "auto_message",
+        "message_type": "custom_build_cost_review",
+        "resolution_required": ["margin_approval", "timeline_adjustment", "scope_reduction"]
+      },
+      "on_resolution": "step_d",
+      "on_max_turns_exceeded": "step_intervention",
+      "on_no_custom_build": "step_d"
+    },
+
+    "step_intervention": {
+      "name": "Human Intervention Required",
+      "description": "Wait for human resolution when automated agent negotiation fails after max turns",
+      "type": "wait_for_input",
+      "wait_for": {
+        "file": "logs/human_resolution.json",
+        "timeout": null,
+        "polling_interval_seconds": 30
+      },
+      "expected_schema": {
+        "status": "RESOLVED|REJECTED|ESCALATED",
+        "resolution_type": "margin_approval|timeline_adjustment|scope_reduction|deal_decline|executive_override",
+        "resolved_by": "<human_identifier>",
+        "resolution_timestamp": "<ISO-8601>",
+        "notes": "<optional string>",
+        "approved_parameters": {
+          "custom_build_approved": "boolean",
+          "adjusted_margin": "number|null",
+          "adjusted_timeline": "string|null",
+          "scope_modifications": "array|null"
+        }
+      },
+      "on_file_received": {
+        "validate_schema": true,
+        "on_status_resolved": "step_d",
+        "on_status_rejected": "pipeline_terminated",
+        "on_status_escalated": "pipeline_escalated_to_executive"
+      },
+      "halt_pipeline": true,
+      "create_notification": {
+        "file": "logs/HUMAN_INTERVENTION_REQUIRED.txt",
+        "content_template": "ESCALATION: Custom Build resolution failed after {{max_turns}} turns.\n\nTimestamp: {{timestamp}}\nAssessment ID: {{assessment_id}}\nClient: {{client_context}}\n\nRequired Action: Review logs/cross_talk.json and provide resolution in logs/human_resolution.json\n\nResolution Options:\n- margin_approval: Approve custom build with current margin impact\n- timeline_adjustment: Approve with modified timeline\n- scope_reduction: Approve with reduced scope\n- deal_decline: Decline opportunity\n- executive_override: Escalate to executive for final decision"
+      }
+    },
+
+    "step_d": {
+      "name": "Report Compilation",
+      "agent": "document_architect",
+      "pre_conditions": {
+        "description": "Ensure all blockers are resolved before report compilation",
+        "checks": [
+          {
+            "check_id": "resolution_status_check",
+            "description": "Verify human intervention or cross-talk resolution is complete",
+            "logic": "OR",
+            "conditions": [
+              {
+                "source": "logs/human_resolution.json",
+                "field": "status",
+                "operator": "equals",
+                "value": "RESOLVED",
+                "on_file_missing": "skip"
+              },
+              {
+                "source": "logs/cross_talk.json",
+                "field": "status",
+                "operator": "equals",
+                "value": "RESOLVED",
+                "on_file_missing": "skip"
+              },
+              {
+                "source": "step_c",
+                "field": "resolution_path",
+                "operator": "equals",
+                "value": "on_no_custom_build",
+                "description": "No custom build required, skip resolution check"
+              }
+            ],
+            "on_failure": {
+              "action": "block",
+              "message": "Cannot compile report: Unresolved blockers detected. Status must be RESOLVED in human_resolution.json or cross_talk.json.",
+              "halt_pipeline": true
+            }
+          }
+        ]
+      },
+      "actions": [
+        {
+          "action": "aggregate_logs",
+          "input": [
+            "logs/outcomes_strategist_log.json",
+            "logs/technical_pm_log.json",
+            "logs/legal_counsel_log.json",
+            "logs/finance_director_log.json",
+            "logs/human_resolution.json"
+          ],
+          "output": "workspace/aggregated_logs.json",
+          "on_missing_input": "skip"
+        },
+        {
+          "action": "compile_report",
+          "input": "workspace/aggregated_logs.json",
+          "output": "workspace/FINAL_REPORT.md",
+          "pre_condition": {
+            "require_status": "RESOLVED",
+            "sources": ["logs/human_resolution.json", "logs/cross_talk.json"],
+            "fallback": "step_c.resolution_path === 'on_no_custom_build'"
+          }
+        },
+        {
+          "action": "trigger_pdf_conversion",
+          "input": "workspace/FINAL_REPORT.md",
+          "output": "workspace/FINAL_REPORT.pdf",
+          "converter": "markdown_to_pdf"
+        }
+      ],
+      "post_actions": [
+        {
+          "action": "calculate_efficiency_metrics",
+          "metric_id": "human_hours_saved",
+          "description": "Calculate estimated human hours saved by automated discovery process",
+          "calculation": {
+            "inputs": {
+              "total_execution_time_ms": "{{pipeline.total_execution_time}}",
+              "agent_count": "{{pipeline.agents_invoked}}",
+              "document_pages_generated": "{{step_d.output_page_count}}",
+              "systems_analyzed": "{{step_a.systems_inventory.length}}",
+              "compliance_checks_performed": "{{step_b.legal_counsel.checks_count}}"
+            },
+            "formula": {
+              "baseline_human_hours": {
+                "discovery_call_analysis": 2.0,
+                "technical_review": 3.0,
+                "legal_compliance_review": 2.5,
+                "financial_analysis": 1.5,
+                "report_compilation": 4.0,
+                "cross_functional_coordination": 2.0
+              },
+              "total_baseline_hours": 15.0,
+              "automation_execution_hours": "total_execution_time_ms / 3600000",
+              "human_hours_saved": "total_baseline_hours - automation_execution_hours",
+              "efficiency_ratio": "human_hours_saved / total_baseline_hours"
+            },
+            "output": {
+              "file": "workspace/efficiency_metrics.json",
+              "include_in_report": true,
+              "fields": [
+                "human_hours_saved",
+                "efficiency_ratio",
+                "total_execution_time_formatted",
+                "cost_savings_estimate"
+              ]
+            },
+            "cost_calculation": {
+              "average_hourly_rate_usd": 150,
+              "cost_savings_formula": "human_hours_saved * average_hourly_rate_usd"
+            }
+          }
+        }
+      ],
+      "on_complete": "pipeline_complete"
+    }
+  },
+
+  "agents": [
+    "outcomes_strategist",
+    "technical_pm",
+    "legal_counsel",
+    "finance_director",
+    "document_architect"
+  ],
+
+  "logging": {
+    "enabled": true,
+    "output_dir": "logs/",
+    "format": "json",
+    "include_cross_talk": true
+  },
+
+  "escalation_rules": {
+    "reference": "../knowledge_base/GOVERNANCE_RULES.md"
+  }
+}
