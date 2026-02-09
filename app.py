@@ -1,5 +1,5 @@
 """
-Glean Intelligence Suite - Professional Multi-Agent System
+DealNexus Intelligence Suite - Professional Multi-Agent System
 Production-Grade Streamlit Application with Enhanced Intelligence Layer
 """
 
@@ -246,7 +246,7 @@ def save_uploaded_file(uploaded_file) -> Optional[Path]:
 class DiscoveryReportPDF(FPDF):
     def header(self):
         self.set_font('Helvetica', 'B', 12)
-        self.cell(0, 10, 'Glean Intelligence Suite - Strategic Vision', 0, 1, 'C')
+        self.cell(0, 10, 'DealNexus Intelligence Suite - Strategic Vision', 0, 1, 'C')
         self.line(10, 20, 200, 20)
         self.ln(10)
 
@@ -484,7 +484,7 @@ def update_live_feed(message: str):
 def call_ai_agent(agent_name: str, context: Dict) -> Dict:
     """Call Gemini API with universal context injection."""
     prompt_template = read_agent_prompt(agent_name)
-    system_name = "Glean Intelligence Suite"
+    system_name = "DealNexus Intelligence Suite"
     client_context = context.get("client_context", "Unknown Client")
     
     system_prompt = prompt_template.replace("{{SYSTEM_NAME}}", system_name)
@@ -1168,7 +1168,7 @@ def render_executive_header(status_placeholder):
     st.markdown("""
     <div style="margin-bottom: 20px;">
         <h1 style="margin:0; font-family:'Manrope', sans-serif; font-weight:800; font-size: 2.5em; background: -webkit-linear-gradient(0deg, #f8fafc, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1.5px;">
-            GLEAN INTELLIGENCE SUITE
+            DEALNEXUS INTELLIGENCE SUITE
         </h1>
     </div>
     """, unsafe_allow_html=True)
@@ -1520,13 +1520,13 @@ def render_report_view():
 # ============================================================================
 
 def main():
-    st.set_page_config(page_title="Glean Intelligence Suite", page_icon="\u26A1", layout="wide")
+    st.set_page_config(page_title="DealNexus Intelligence Suite", page_icon="\u26A1", layout="wide")
     inject_cyber_css()
     initialize_session_state()
     
     # --- Sidebar ---
     with st.sidebar:
-        st.title("\u26A1 Glean Suite")
+        st.title("\u26A1 DealNexus Suite")
         
         st.markdown("### Strategic Value Modeler")
         st.session_state.hourly_rate = st.slider("Human Capital Cost ($/hr)", 100, 300, 175, 5)
@@ -1639,7 +1639,7 @@ def main():
              path = TRANSCRIPTS_DIR / st.session_state.uploaded_transcript
              if path.exists():
                  text = safe_read_text(path)
-                 with st.status("Glean Intelligence Pipeline Active...", expanded=True) as status:
+                 with st.status("DealNexus Intelligence Pipeline Active...", expanded=True) as status:
                      success = run_pipeline_steps(text, st.session_state.client_context, status_placeholder)
                      if success:
                          status.update(label="Pipeline Complete", state="complete", expanded=False)
